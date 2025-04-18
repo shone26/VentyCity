@@ -1,0 +1,272 @@
+/* src/styles/animation.css */
+/* Import this file in your main.tsx */
+
+/* Base animation setup */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient-background {
+    background: linear-gradient(-45deg, rgba(255, 87, 0, 0.3), rgba(138, 43, 226, 0.3), rgba(255, 87, 0, 0.3), rgba(138, 43, 226, 0.3));
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+  }
+  
+  /* Particle container */
+  .particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Particle styling */
+  .particle {
+    position: absolute;
+    width: var(--particle-size, 10px);
+    height: var(--particle-size, 10px);
+    background-color: var(--particle-color, #FF5700);
+    border-radius: 50%;
+    filter: blur(var(--particle-blur, 0px));
+    opacity: 0.7;
+    z-index: -5;
+  }
+  
+  /* Individual particle animations */
+  .particle-1 {
+    top: 10%;
+    left: 20%;
+    animation: moveParticle1 20s infinite linear;
+  }
+  
+  .particle-2 {
+    top: 40%;
+    left: 80%;
+    animation: moveParticle2 25s infinite linear;
+  }
+  
+  .particle-3 {
+    top: 70%;
+    left: 10%;
+    animation: moveParticle3 18s infinite linear;
+  }
+  
+  .particle-4 {
+    top: 25%;
+    left: 60%;
+    animation: moveParticle4 22s infinite linear;
+  }
+  
+  .particle-5 {
+    top: 85%;
+    left: 50%;
+    animation: moveParticle5 24s infinite linear;
+  }
+  
+  .particle-6 {
+    top: 15%;
+    left: 90%;
+    animation: moveParticle6 19s infinite linear;
+  }
+  
+  .particle-7 {
+    top: 50%;
+    left: 30%;
+    animation: moveParticle7 21s infinite linear;
+  }
+  
+  .particle-8 {
+    top: 60%;
+    left: 70%;
+    animation: moveParticle8 23s infinite linear;
+  }
+  
+  .particle-9 {
+    top: 30%;
+    left: 40%;
+    animation: moveParticle9 17s infinite linear;
+  }
+  
+  .particle-10 {
+    top: 75%;
+    left: 25%;
+    animation: moveParticle10 26s infinite linear;
+  }
+  
+  .particle-11 {
+    top: 5%;
+    left: 50%;
+    animation: moveParticle11 28s infinite linear;
+  }
+  
+  .particle-12 {
+    top: 45%;
+    left: 15%;
+    animation: moveParticle12 27s infinite linear;
+  }
+  
+  .particle-13 {
+    top: 90%;
+    left: 85%;
+    animation: moveParticle13 19s infinite linear;
+  }
+  
+  .particle-14 {
+    top: 35%;
+    left: 95%;
+    animation: moveParticle14 24s infinite linear;
+  }
+  
+  .particle-15 {
+    top: 65%;
+    left: 5%;
+    animation: moveParticle15 22s infinite linear;
+  }
+  
+  /* Particle movement animations */
+  @keyframes moveParticle1 {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(100px, 50px) scale(1.5); }
+    50% { transform: translate(200px, -50px) scale(1); }
+    75% { transform: translate(100px, -100px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  
+  @keyframes moveParticle2 {
+    0% { transform: translate(0, 0) scale(1.2); }
+    25% { transform: translate(-100px, 100px) scale(1); }
+    50% { transform: translate(-150px, 0) scale(0.8); }
+    75% { transform: translate(-75px, -100px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1.2); }
+  }
+  
+  @keyframes moveParticle3 {
+    0% { transform: translate(0, 0) scale(0.8); }
+    33% { transform: translate(150px, -75px) scale(1.2); }
+    66% { transform: translate(50px, 100px) scale(1); }
+    100% { transform: translate(0, 0) scale(0.8); }
+  }
+  
+  @keyframes moveParticle4 {
+    0% { transform: translate(0, 0) scale(1.1); }
+    20% { transform: translate(-80px, -30px) scale(0.9); }
+    40% { transform: translate(-120px, 50px) scale(1.3); }
+    60% { transform: translate(-50px, 100px) scale(1); }
+    80% { transform: translate(70px, 50px) scale(0.7); }
+    100% { transform: translate(0, 0) scale(1.1); }
+  }
+  
+  @keyframes moveParticle5 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate(-100px, -100px) rotate(180deg) scale(1.5); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+  }
+  
+  @keyframes moveParticle6 {
+    0% { transform: translate(0, 0) scale(0.9); }
+    25% { transform: translate(-50px, 100px) scale(1.2); }
+    50% { transform: translate(-150px, 50px) scale(0.7); }
+    75% { transform: translate(-100px, -50px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(0.9); }
+  }
+  
+  @keyframes moveParticle7 {
+    0% { transform: translate(0, 0) scale(1.3); }
+    33% { transform: translate(100px, -50px) scale(0.8); }
+    66% { transform: translate(200px, 100px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1.3); }
+  }
+  
+  @keyframes moveParticle8 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(70px, -70px) rotate(90deg) scale(1.3); }
+    50% { transform: translate(0, -140px) rotate(180deg) scale(1); }
+    75% { transform: translate(-70px, -70px) rotate(270deg) scale(0.7); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+  }
+  
+  @keyframes moveParticle9 {
+    0% { transform: translate(0, 0) scale(0.7); }
+    20% { transform: translate(60px, 40px) scale(1); }
+    40% { transform: translate(0, 100px) scale(1.2); }
+    60% { transform: translate(-60px, 40px) scale(0.9); }
+    80% { transform: translate(-60px, -40px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(0.7); }
+  }
+  
+  @keyframes moveParticle10 {
+    0% { transform: translate(0, 0) scale(1.1); }
+    50% { transform: translate(120px, -80px) scale(0.8); }
+    100% { transform: translate(0, 0) scale(1.1); }
+  }
+  
+  @keyframes moveParticle11 {
+    0% { transform: translate(0, 0) scale(0.9); }
+    33% { transform: translate(-100px, 70px) scale(1.2); }
+    66% { transform: translate(100px, 140px) scale(1); }
+    100% { transform: translate(0, 0) scale(0.9); }
+  }
+  
+  @keyframes moveParticle12 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1.2); }
+    50% { transform: translate(80px, 100px) rotate(180deg) scale(0.8); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1.2); }
+  }
+  
+  @keyframes moveParticle13 {
+    0% { transform: translate(0, 0) scale(0.8); }
+    25% { transform: translate(-70px, -50px) scale(1.1); }
+    50% { transform: translate(-140px, 0) scale(1.3); }
+    75% { transform: translate(-70px, 50px) scale(1); }
+    100% { transform: translate(0, 0) scale(0.8); }
+  }
+  
+  @keyframes moveParticle14 {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-120px, -80px) scale(1.4); }
+    66% { transform: translate(-60px, 80px) scale(0.7); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  
+  @keyframes moveParticle15 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1.1); }
+    25% { transform: translate(50px, -50px) rotate(90deg) scale(0.9); }
+    50% { transform: translate(120px, 0) rotate(180deg) scale(1.3); }
+    75% { transform: translate(50px, 50px) rotate(270deg) scale(1); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1.1); }
+  }
+  
+  /* Additional ambient light effect */
+  .light-effect {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -8;
+    opacity: 0.4;
+    animation: pulse 8s infinite alternate;
+  }
+  
+  .light-effect-1 {
+    top: 20%;
+    left: 30%;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 87, 0, 0.5); /* VENGY Orange */
+    animation-delay: 0s;
+  }
+  
+  .light-effect-2 {
+    bottom: 25%;
+    right: 25%;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(138, 43, 226, 0.5); /* VENGY Purple */
+    animation-delay: 4s;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.3; }
+    100% { transform: scale(1.2); opacity: 0.5; }
+  }

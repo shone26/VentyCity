@@ -1,0 +1,130 @@
+/* src/styles/responsive-fixes.css */
+/* Add this file to your styles directory and import it in your main CSS file */
+
+/* Specific fixes for tablet resolution around 758x642 */
+@media (min-width: 750px) and (max-width: 768px) and (max-height: 650px) {
+    /* Navbar adjustments */
+    .navbar-container {
+      padding: 0.5rem 1rem;
+    }
+    
+    .navbar-logo {
+      height: 2.5rem;
+    }
+    
+    /* Hero section adjustments */
+    .hero-title {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-logo {
+      max-width: 200px;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-stats {
+      margin-top: 1.5rem;
+      gap: 0.5rem;
+    }
+    
+    .hero-stat-item {
+      padding: 0.5rem;
+    }
+    
+    .hero-stat-value {
+      font-size: 1.25rem;
+    }
+    
+    .hero-stat-label {
+      font-size: 0.75rem;
+    }
+    
+    /* Staff card adjustments */
+    .staff-card {
+      padding: 1rem;
+    }
+    
+    .staff-avatar {
+      width: 3rem;
+      height: 3rem;
+    }
+    
+    .staff-name {
+      font-size: 1rem;
+    }
+    
+    .staff-role {
+      font-size: 0.75rem;
+    }
+    
+    .staff-description {
+      font-size: 0.75rem;
+    }
+    
+    /* Gallery adjustments */
+    .gallery-filter-button {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+    }
+    
+    .gallery-grid {
+      gap: 0.5rem;
+    }
+    
+    /* Rule tabs adjustments */
+    .rule-tab-button {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+    }
+    
+    .rule-item-title {
+      font-size: 0.875rem;
+    }
+    
+    .rule-item-description {
+      font-size: 0.75rem;
+    }
+    
+    /* Footer adjustments */
+    .footer-container {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    .footer-logo {
+      height: 2.5rem;
+    }
+    
+    .footer-heading {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-link {
+      font-size: 0.75rem;
+    }
+    
+    .footer-social-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  
+  /* Fix for scroll issues on small heights */
+  @media (max-height: 650px) {
+    .hero-container {
+      min-height: 100vh;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+    
+    .hero-scroll-indicator {
+      display: none;
+    }
+  }
