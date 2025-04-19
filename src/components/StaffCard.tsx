@@ -1,11 +1,12 @@
 // src/components/StaffCard.tsx
 import React, { useEffect, useState } from 'react';
 
+// Update the interface to support both string and object for discord
 interface StaffCardProps {
   name: string;
   role: string;
   description: string;
-  discord: string;
+  discord: string | { username: string; link: string };
   joinDate: string;
   avatar: string;
   gradient: string;
@@ -40,6 +41,10 @@ const StaffCard: React.FC<StaffCardProps> = ({
   // Force compact view for tablet view
   const useCompactView = compact || isTabletView;
 
+  // Determine discord username and link
+  const discordUsername = typeof discord === 'object' ? discord.username : discord;
+  const discordLink = typeof discord === 'object' ? discord.link : null;
+
   return (
     <div className={`bg-gradient-to-br from-gray-900 to-black ${isTabletView ? 'p-3' : 'p-4 sm:p-6'} rounded-xl border border-purple-500/30 hover:border-purple-500/60 transition-colors h-full staff-card`}>
       <div className="flex flex-col items-center h-full">
@@ -60,7 +65,19 @@ const StaffCard: React.FC<StaffCardProps> = ({
         <div className={`w-full pt-${useCompactView ? '1' : '4'} border-t border-gray-800 mt-auto`}>
           <div className="flex flex-col gap-1">
             <p className={`text-gray-500 ${isTabletView ? 'text-xs' : 'text-xs sm:text-sm'}`}>
-              <span className="text-purple-400">Discord:</span> {discord}
+              <span className="text-purple-400">Discord:</span>{" "}
+              {discordLink ? (
+                <a 
+                  href={discordLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  {discordUsername}
+                </a>
+              ) : (
+                discordUsername
+              )}
             </p>
             <p className={`text-gray-500 ${isTabletView ? 'text-xs' : 'text-xs sm:text-sm'}`}>
               <span className="text-purple-400">Joined:</span> {joinDate}

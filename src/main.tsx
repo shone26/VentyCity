@@ -16,6 +16,7 @@ import Gallery from './pages/Gallery';
 import RootLayout from './components/RootLayout';
 import { ViewportProvider } from './contexts/ViewportContext';
 import VideoDebug from './components/VideoDebug';
+import VideoTestPage from './pages/VideoTestPage';
 
 // Define the router with TypeScript
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/debug-video",
     element: <VideoDebug />,
+  },
+  {
+    path: "/video-test",
+    element: <VideoTestPage />,
   }
 ]);
 

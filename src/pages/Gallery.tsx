@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
 
+// Import gallery images
+import image1 from '@/assets/gallery/1.png';
 const Gallery: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedImage, setSelectedImage] = useState<null | GalleryImage>(null);
@@ -17,16 +19,18 @@ const Gallery: React.FC = () => {
     { id: 'scenery', name: 'Scenery' },
   ];
 
-  // Sample gallery data (in a real implementation, this would likely come from an API)
-  const galleryImages: GalleryImage[] = Array.from({ length: 24 }).map((_, index) => ({
-    id: `img-${index + 1}`,
-    src: `/api/placeholder/800/600?text=VENTY+RP+${index + 1}`,
-    thumbnail: `/api/placeholder/400/300?text=VENTY+RP+${index + 1}`,
-    caption: `VENTY Roleplay Screenshot ${index + 1}`,
-    category: categories[Math.floor(Math.random() * (categories.length - 1)) + 1].id,
-    author: `Player${Math.floor(Math.random() * 20) + 1}`,
-    date: `April ${Math.floor(Math.random() * 15) + 1}, 2025`,
-  }));
+  // Curated gallery images with real data
+  const galleryImages: GalleryImage[] = [
+    {
+      id: 'img-1',
+      src: image1,
+      thumbnail: image1,
+      caption: 'On a mountain',
+      category: 'action',
+      author: 'OfficerBrave',
+      date: 'April 15, 2025'
+    },
+  ];
 
   const filteredImages = activeCategory === 'all'
     ? galleryImages

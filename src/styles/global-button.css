@@ -1,0 +1,53 @@
+/* src/styles/global-buttons.css */
+@tailwind utilities;
+
+@layer components {
+  /* Primary Gradient Button */
+  .btn-primary {
+    @apply inline-block px-6 py-3 text-white rounded-lg font-medium 
+           transition-all duration-300 bg-gradient-to-r from-orange-500 
+           to-purple-600 bg-size-200 bg-pos-r hover:bg-pos-l 
+           hover:shadow-lg;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-block px-6 py-3 bg-black/50 backdrop-blur-sm 
+           border-2 border-purple-500 text-white rounded-lg 
+           font-medium transition-all duration-300 
+           hover:bg-black/70 hover:border-orange-500;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-block px-6 py-3 border-2 border-purple-500 
+           text-purple-400 rounded-lg font-medium 
+           transition-all duration-300 hover:bg-purple-500/10;
+  }
+
+  /* Soft Button */
+  .btn-soft {
+    @apply inline-block px-6 py-3 bg-purple-500/10 
+           text-purple-400 rounded-lg font-medium 
+           transition-all duration-300 hover:bg-purple-500/20;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-500 to-purple-600 
+           bg-clip-text text-transparent;
+  }
+
+  .bg-size-200 {
+    background-size: 200% auto;
+  }
+
+  .bg-pos-r {
+    background-position: right center;
+  }
+
+  .bg-pos-l {
+    background-position: left center;
+  }
+}

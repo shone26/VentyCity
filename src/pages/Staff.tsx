@@ -3,6 +3,15 @@ import React from 'react';
 import Hero from '../components/Hero';
 import StaffCard from '../components/StaffCard';
 
+
+import randy from '@/assets/avatars/randi.png';
+import dk from '@/assets/avatars/dk.gif'
+import soul from '@/assets/avatars/soul.gif'
+import wije from '@/assets/avatars/wade.gif'
+import shiran from '@/assets/avatars/shiran.gif'
+import shone from '@/assets/avatars/shone.jpg'
+import error from '@/assets/avatars/error.png'
+
 const Staff: React.FC = () => {
   return (
     <div>
@@ -19,7 +28,7 @@ const Staff: React.FC = () => {
             {/* Introduction */}
             <div className="text-center mb-10 sm:mb-16">
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-                Our staff team works tirelessly to ensure VENTY Roleplay provides the best experience possible. 
+                Our staff team works tirelessly to ensure VENTY Roleplay provides the best experience possible.
                 From server development to player support, each member plays a vital role in our community.
               </p>
             </div>
@@ -29,63 +38,57 @@ const Staff: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 SERVER OWNERS
               </h2>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                <StaffCard
-                  name="NightHawk"
-                  role="Founder & Lead Developer"
-                  description="Founded VENTY Roleplay in 2023 and leads the development team. Specializes in core systems and optimization."
-                  discord="NightHawk#1337"
-                  joinDate="January 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-orange-500 to-purple-600"
-                />
-                <StaffCard
-                  name="Phoenix"
-                  role="Co-Owner & Community Manager"
-                  description="Oversees the community, staff team, and server operations. The friendly face of VENTY leadership."
-                  discord="Phoenix#8642"
-                  joinDate="February 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-orange-500 to-purple-600"
-                />
+
+              {/* Changed from grid to flex layout with center alignment */}
+              <div className="flex justify-center">
+                <div className="max-w-md"> {/* Added a container with max width  max-w-md max-w-sm max-w-xs max-w-lg*/}
+                  <StaffCard
+                    name="ⓥ RanDiNeX"
+                    role="Founder & Lead Developer"
+                    description="Founded VENTY Roleplay in 2023 and leads the development team. Specializes in core systems and optimization."
+                    discord={{ username: "randinex", link: "https://discordapp.com/users/812379890883887124" }}
+                    joinDate="March 2025"
+                    avatar={randy}
+                    gradient="from-orange-500 to-purple-600"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Development Team */}
             <div className="mb-12 sm:mb-16 md:mb-20">
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
-                DEVELOPMENT TEAM
+                MANAGEMENT TEAM 
               </h2>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+              <StaffCard
+                    name="D_D_K"
+                    role="Lead Script Developer"
+                    description="Creates and maintains custom scripts and game mechanics that make VENTY unique."
+                    discord={{ username: "dk.kratos", link: "https://discordapp.com/users/828968509420732446" }}
+                    joinDate="June 2024"
+                    avatar={dk}
+                    gradient="from-orange-500 to-purple-600"
+                  />
                 <StaffCard
-                  name="CodeMaster"
-                  role="Lead Script Developer"
-                  description="Creates and maintains custom scripts and game mechanics that make VENTY unique."
-                  discord="CodeMaster#4521"
-                  joinDate="March 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-blue-500 to-purple-600"
-                />
+                    name="DevsDoOpStuff"
+                    role="Lead Anti-Cheat Master"
+                    description="Develops and implements advanced anti-cheat systems to ensure a fair and secure gaming environment."
+                    discord={{ username: "wijest_18995", link: "https://discordapp.com/users/1246333985597161472" }}
+                    joinDate="January 2025"
+                    avatar={wije}
+                    gradient="from-orange-500 to-purple-600"
+                  />
                 <StaffCard
-                  name="Pixelized"
-                  role="UI/UX Designer"
-                  description="Designs all in-game user interfaces and ensures smooth player experience through intuitive design."
-                  discord="Pixelized#7890"
-                  joinDate="April 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-blue-500 to-purple-600"
-                />
-                <StaffCard
-                  name="MapMaker"
-                  role="Map & Asset Developer"
-                  description="Creates custom buildings, interiors, and map modifications to enhance the city environment."
-                  discord="MapMaker#2468"
-                  joinDate="May 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-blue-500 to-purple-600"
-                />
+                    name="soul"
+                    role="Lead Map & Asset Developer"
+                    description="Creates custom buildings, interiors, and map modifications to enhance the city environment."
+                    discord={{ username: "darksoulbestt", link: "https://discordapp.com/users/1046107593501851788" }}
+                    joinDate="July 2024"
+                    avatar={soul}
+                    gradient="from-orange-500 to-purple-600"
+                  />
               </div>
             </div>
 
@@ -94,18 +97,20 @@ const Staff: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 ADMINISTRATION TEAM
               </h2>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <StaffCard
-                  name="Justice"
-                  role="Head Administrator"
-                  description="Leads the admin team and handles major server decisions, disputes, and policy enforcement."
-                  discord="Justice#6352"
-                  joinDate="March 2023"
-                  avatar="/api/placeholder/200/200"
-                  gradient="from-red-500 to-purple-600"
-                />
-                <StaffCard
+
+              <div className="flex justify-center">
+              <div className="max-w-md">
+              <StaffCard
+                    name="ꌗꃅꀤꋪꍏꈤ"
+                    role="Head Administrator"
+                    description="Leads the admin team and handles major server decisions, disputes, and policy enforcement."
+                    discord={{ username: "shiran8999", link: "https://discordapp.com/users/1107929243830194236" }}
+                    joinDate="April 2025"
+                    avatar={shiran}
+                    gradient="from-orange-500 to-purple-600"
+                  />
+                  </div>
+                {/* <StaffCard
                   name="Enforcer"
                   role="Senior Administrator"
                   description="Oversees rule enforcement, handles appeals, and manages the moderation team."
@@ -122,7 +127,7 @@ const Staff: React.FC = () => {
                   joinDate="June 2023"
                   avatar="/api/placeholder/200/200"
                   gradient="from-red-500 to-purple-600"
-                />
+                /> */}
               </div>
             </div>
 
@@ -131,25 +136,25 @@ const Staff: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 MODERATION TEAM
               </h2>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <StaffCard
-                  name="Guardian"
+                  name="𝙴𝚁𝚁𝙾𝚁_404"
                   role="Senior Moderator"
                   description="Oversees the moderation team and handles escalated player reports."
-                  discord="Guardian#5566"
-                  joinDate="July 2023"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "draven_fd", link: "https://discordapp.com/users/1338938971790774283" }}
+                  joinDate="July 2024"
+                  avatar={error}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
                 <StaffCard
-                  name="Sentinel"
-                  role="Senior Moderator"
-                  description="Specializes in anti-cheat monitoring and technical issues resolution."
-                  discord="Sentinel#7788"
-                  joinDate="August 2023"
-                  avatar="/api/placeholder/200/200"
+                  name="24 - DAVID"
+                  role="Senior Moderator (Web)"
+                  description="Responsible for overseeing and managing web-related community interactions, ensuring a positive and respectful environment. Specializes in resolving technical issues and maintaining community guidelines."
+                  discord={{ username: "shone4105", link: "https://discordapp.com/users/1060249054111613048" }}
+                  joinDate="July 2024"
+                  avatar={shone}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
@@ -224,7 +229,7 @@ const Staff: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 SUPPORT TEAM
               </h2>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <StaffCard
                   name="Helper"

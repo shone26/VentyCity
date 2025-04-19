@@ -1,0 +1,64 @@
+/* src/styles/video-background.css */
+
+/* Video Background Styles and Fixes */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10; /* Use a negative z-index to stay behind content */
+    overflow: hidden;
+  }
+  
+  .video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-background .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Slightly above the video but below content */
+  }
+  
+  /* Important fix: ensure no other elements have backgrounds that could hide the video */
+  #root, .min-h-screen, body {
+    background-color: transparent !important;
+  }
+  
+  /* Main content must be positioned above the video */
+  main, section, .hero-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Specificity fix for elements that might have higher z-index */
+  .bg-black {
+    background-color: rgba(0, 0, 0, 1) !important;
+  }
+  
+  /* Fix for Firefox and Safari */
+  @-moz-document url-prefix() {
+    .video-background {
+      will-change: transform;
+    }
+  }
+  
+  @supports (-webkit-overflow-scrolling: touch) {
+    .video-background {
+      transform: translateZ(0);
+    }
+    
+    .video-background video {
+      position: fixed;
+    }
+  }

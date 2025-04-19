@@ -1,5 +1,5 @@
 // src/components/Hero.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 interface HeroProps {
@@ -17,6 +17,7 @@ const Hero: React.FC<HeroProps> = ({
 }) => {
   // Check if viewport is in the target range (around 758x642)
   const [isTabletView, setIsTabletView] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   useEffect(() => {
     const checkViewport = () => {
@@ -27,13 +28,38 @@ const Hero: React.FC<HeroProps> = ({
     
     checkViewport();
     window.addEventListener('resize', checkViewport);
+    
+    // Play video if available
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.error("Error playing video:", err);
+      });
+    }
+    
     return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
   return (
     <div 
-      className={`relative ${isTabletView ? 'h-screen overflow-hidden' : 'min-h-[100vh]'} ${backgroundImage} bg-cover bg-center bg-no-repeat hero-container`}
+      className={`relative ${isTabletView ? 'h-screen overflow-hidden' : 'min-h-[100vh]'}`}
     >
+      {/* Video background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <video 
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/background.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Fallback background image if video fails */}
+        <div className={`absolute inset-0 ${backgroundImage} bg-cover bg-center bg-no-repeat z-[-1]`}></div>
+      </div>
+      
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90"></div>
       
@@ -80,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({
         
         {/* Server stats */}
         <div className={`${isTabletView ? 'mt-6 gap-2' : 'mt-8 sm:mt-16 gap-3 sm:gap-6'} grid grid-cols-2 md:grid-cols-4 w-full max-w-3xl px-2 hero-stats`}>
-          <StatItem value="150+" label="Active Players" isTabletView={isTabletView} />
+          <StatItem value="75+" label="Active Players" isTabletView={isTabletView} />
           <StatItem value="24/7" label="Server Uptime" isTabletView={isTabletView} />
           <StatItem value="100+" label="Custom Jobs" isTabletView={isTabletView} />
           <StatItem value="500+" label="Custom Cars" isTabletView={isTabletView} />

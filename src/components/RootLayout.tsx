@@ -1,5 +1,5 @@
 // src/components/RootLayout.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -7,6 +7,7 @@ import Footer from './Footer';
 const RootLayout: React.FC = () => {
   // Check if viewport is in the target range (around 758x642)
   const [isTabletView, setIsTabletView] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   useEffect(() => {
     const checkViewport = () => {
@@ -17,12 +18,56 @@ const RootLayout: React.FC = () => {
     
     checkViewport();
     window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
+    
+    // Attempt to play the video
+    const playVideo = async () => {
+      if (videoRef.current) {
+        try {
+          videoRef.current.play();
+          console.log("Video playback started successfully");
+        } catch (error) {
+          console.error("Error playing video:", error);
+        }
+      }
+    };
+    
+    playVideo();
+    
+    return () => {
+      window.removeEventListener('resize', checkViewport);
+    };
   }, []);
 
   return (
     <div className={`flex flex-col min-h-screen ${isTabletView ? 'tablet-view' : ''}`}>
-      {/* Notice: We removed the bg-black from here to allow the video to show through */}
+      {/* Video Background */}
+      <div className="fixed top-0 left-0 w-full h-full" style={{ zIndex: -10 }}>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/50" style={{ zIndex: -9 }}></div>
+        
+        {/* Video element */}
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: -10 }}
+        >
+          <source src="/videos/background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Fallback image */}
+        <img 
+          src="/src/assets/images/hero-bg.jpg" 
+          alt="Background" 
+          className="absolute inset-0 w-full h-full object-cover" 
+          style={{ zIndex: -11 }}
+        />
+      </div>
+      
       <Navbar />
       <main className={`flex-grow ${isTabletView ? 'pt-14' : ''}`}>
         <Outlet />

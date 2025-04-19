@@ -24,13 +24,13 @@ const About: React.FC = () => {
               
               <div className="space-y-6 text-gray-300">
                 <p>
-                VENTY Roleplay was founded in early 2023 by a group of passionate GTA V roleplayers who wanted to create a server that truly emphasized quality roleplay, immersion, and community. What started as a small project among friends quickly grew into one of the most respected roleplay communities in the FiveM ecosystem.
+                Founded on June 19, 2024, VENTY Roleplay was created by the Venty Management Team, a group of passionate GTA V roleplayers who wanted to build a server that truly emphasized quality roleplay, immersion, and community. What started as a small project among friends quickly grew into one of the most respected roleplay communities in the FiveM ecosystem.
                 </p>
                 <p>
-                  Our name "VENTY" represents the vibrant energy we bring to the roleplay experience - dynamic, exciting, and always evolving. From day one, our mission has been to create a roleplay environment where creativity, storytelling, and player interactions take center stage.
+                Our name "VENTY" represents the vibrant energy we bring to the roleplay experience—dynamic, exciting, and always evolving. From day one, our mission has been to create a roleplay environment where creativity, storytelling, and player interactions take center stage.
                 </p>
                 <p>
-                  Today, VENTY Roleplay hosts hundreds of active players and continues to grow as we expand our features, improve our systems, and welcome new members to our community. Our dedicated development and administration teams work tirelessly to ensure that VENTY remains at the cutting edge of GTA V roleplay.
+                Today, VENTY Roleplay hosts hundreds of active players and continues to grow as we expand our features, improve our systems, and welcome new members to our community. Our dedicated development team, the Venty Dev Team, works tirelessly alongside our administration to ensure that VENTY remains at the cutting edge of GTA V roleplay. We are also proud to have the Stax Community as our main partner, helping us achieve our goals and enhance the overall experience for our players.
                 </p>
               </div>
             </div>
@@ -82,13 +82,13 @@ const About: React.FC = () => {
               </h2>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <StatCard number="150+" label="Active Players" />
+                <StatCard number="75+" label="Active Players" />
                 <StatCard number="500+" label="Custom Vehicles" />
                 <StatCard number="100+" label="Custom Jobs" />
                 <StatCard number="50+" label="Custom Interiors" />
                 <StatCard number="99.9%" label="Server Uptime" />
                 <StatCard number="24/7" label="Active Staff" />
-                <StatCard number="5,000+" label="Discord Members" />
+                <StatCard number="1,000+" label="Discord Members" />
                 <StatCard number="Weekly" label="Content Updates" />
               </div>
             </div>
