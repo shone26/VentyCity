@@ -1,0 +1,84 @@
+/* src/styles/video-fix.css */
+/* Import this file in your main.tsx */
+
+/* Fix for video z-index issues */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000; /* Extremely low z-index to ensure it's behind everything */
+    overflow: hidden;
+  }
+  
+  .video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -999;
+  }
+  
+  .video-background .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: -998;
+  }
+  
+  /* Fix for stacking context issues */
+  main {
+    position: relative;
+    z-index: 1; /* Ensure main content appears above video */
+  }
+  
+  /* Remove any background colors that might be hiding the video */
+  body, #root, .min-h-screen {
+    background-color: transparent !important;
+  }
+  
+  /* Fix for older browsers */
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Firefox specific fix */
+  @-moz-document url-prefix() {
+    .video-background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+  
+  /* Safari specific fix */
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      .video-background {
+        transform: translateZ(0);
+      }
+    }
+  }
+  
+  /* Fix for mobile devices that might have autoplay restrictions */
+  @media (max-width: 768px) {
+    .video-background::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/public/videos/poster-frame.jpg'); /* Add a poster image */
+      background-size: cover;
+      background-position: center;
+      z-index: -999;
+    }
+  }

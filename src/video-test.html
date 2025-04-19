@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Background Test</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            overflow: hidden;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -998;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding-top: 20vh;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .status {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            z-index: 1000;
+        }
+
+        .actions {
+            margin-top: 2rem;
+        }
+
+        button {
+            background: linear-gradient(to right, #FF5700, #8A2BE2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="bgVideo" autoplay loop muted playsinline>
+            <!-- Try both absolute and relative paths -->
+            <source src="../public/videos/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="status" id="status">Status: Checking video...</div>
+
+    <div class="content">
+        <h1>Video Background Test</h1>
+        <p>This is a standalone test for the video background.</p>
+        
+        <div class="actions">
+            <button id="playBtn">Play Video</button>
+            <button id="pauseBtn">Pause Video</button>
+            <button id="muteBtn">Toggle Mute</button>
+            <button id="pathBtn">Try Alternate Path</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bgVideo');
+            const status = document.getElementById('status');
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const muteBtn = document.getElementById('muteBtn');
+            const pathBtn = document.getElementById('pathBtn');
+            
+            // Log video events
+            const events = [
+                'loadstart', 'durationchange', 'loadedmetadata', 
+                'loadeddata', 'progress', 'canplay', 
+                'canplaythrough', 'playing', 'waiting', 
+                'suspend', 'abort', 'error'
+            ];
+            
+            events.forEach(event => {
+                video.addEventListener(event, () => {
+                    console.log(`Video event: ${event}`);
+                    if (event === 'playing') {
+                        status.textContent = 'Status: ✅ Video playing';
+                        status.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+                    } else if (event === 'error') {
+                        status.textContent = `Status: ❌ Error: ${video.error?.message || 'Unknown error'}`;
+                        status.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
+                    } else {
+                        status.textContent = `Status: Event: ${event}`;
+                    }
+                });
+            });
+            
+            // Button actions
+            playBtn.addEventListener('click', () => {
+                video.play();
+            });
+            
+            pauseBtn.addEventListener('click', () => {
+                video.pause();
+            });
+            
+            muteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                muteBtn.textContent = video.muted ? 'Unmute' : 'Mute';
+            });
+            
+            // Toggle between different paths to test
+            let currentPath = 0;
+            const paths = [
+                '/videos/background.mp4',
+                '../videos/background.mp4',
+                'videos/background.mp4',
+                '/public/videos/background.mp4'
+            ];
+            
+            pathBtn.addEventListener('click', () => {
+                currentPath = (currentPath + 1) % paths.length;
+                const newPath = paths[currentPath];
+                status.textContent = `Status: Trying path: ${newPath}`;
+                video.src = newPath;
+                video.load();
+                video.play();
+            });
+            
+            // Initial check
+            setTimeout(() => {
+                if (video.readyState === 0) {
+                    status.textContent = 'Status: ⚠️ Video not loading, try a different path';
+                    status.style.backgroundColor = 'rgba(255, 165, 0, 0.7)';
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

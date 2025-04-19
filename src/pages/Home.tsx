@@ -2,10 +2,18 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
+import VideoBackground from '@/components/VideoBackground';
 
 const Home: React.FC = () => {
   return (
     <div>
+
+      {/* Video Background - placed outside the main content div */}
+      <VideoBackground 
+        videoSrc="background.mp4" 
+        fallbackImageSrc="/src/assets/images/hero-bg.jpg" 
+      />
+
       <Hero />
       
       {/* Features Section */}

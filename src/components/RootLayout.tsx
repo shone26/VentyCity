@@ -21,7 +21,8 @@ const RootLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className={`flex flex-col min-h-screen bg-black text-white ${isTabletView ? 'tablet-view' : ''}`}>
+    <div className={`flex flex-col min-h-screen ${isTabletView ? 'tablet-view' : ''}`}>
+      {/* Notice: We removed the bg-black from here to allow the video to show through */}
       <Navbar />
       <main className={`flex-grow ${isTabletView ? 'pt-14' : ''}`}>
         <Outlet />

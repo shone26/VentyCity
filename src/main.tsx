@@ -2,7 +2,7 @@
 import './index.css'
 import './styles/responsive-fixes.css'
 import './styles/responsive-utils.css'
-import './styles/animation.css' // Import the animation CSS
+import './styles/animation.css'
 
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -15,6 +15,7 @@ import Staff from './pages/Staff';
 import Gallery from './pages/Gallery';
 import RootLayout from './components/RootLayout';
 import { ViewportProvider } from './contexts/ViewportContext';
+import VideoDebug from './components/VideoDebug';
 
 // Define the router with TypeScript
 const router = createBrowserRouter([
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // Add a standalone debug route
+  {
+    path: "/debug-video",
+    element: <VideoDebug />,
+  }
 ]);
 
 // Add non-null assertion for getElementById since TypeScript needs this guarantee

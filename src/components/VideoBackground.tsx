@@ -1,119 +1,147 @@
-    import React, { useRef, useEffect, useState } from 'react';
+// src/components/VideoBackground.tsx
+import React, { useRef, useEffect, useState } from 'react';
 
-    interface VideoBackgroundProps {
-    videoSrc: string;
-    fallbackImageSrc?: string;
-    }
+interface VideoBackgroundProps {
+  videoSrc: string;
+  fallbackImageSrc?: string;
+}
 
-    const VideoBackground: React.FC<VideoBackgroundProps> = ({ 
-    videoSrc,
-    fallbackImageSrc
-    }) => {
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [videoError, setVideoError] = useState(false);
-    const [videoLoaded, setVideoLoaded] = useState(false);
+const VideoBackground: React.FC<VideoBackgroundProps> = ({ 
+  videoSrc,
+  fallbackImageSrc
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoError, setVideoError] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
-    useEffect(() => {
-        const videoElement = videoRef.current;
-        if (!videoElement) return;
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
 
-        // Detailed logging to track video events
-        const logEvent = (event: string) => {
-        console.log(`Video event: ${event}`);
-        console.log('Video source:', videoSrc); // Logging the video source to ensure the path is valid
-        };
+    // Log everything for debugging
+    console.log("🎬 Attempting to load video from:", videoSrc);
+    
+    // Listen for all relevant events
+    const onLoadStart = () => console.log("Video loadstart event fired");
+    const onLoadedData = () => console.log("Video loadeddata event fired");
+    const onLoadedMetadata = () => console.log("Video loadedmetadata event fired");
+    const onCanPlay = () => console.log("Video canplay event fired");
+    const onCanPlayThrough = () => {
+      console.log("Video canplaythrough event fired");
+      setVideoLoaded(true);
+    };
+    const onPlaying = () => console.log("Video playing event fired");
+    const onWaiting = () => console.log("Video waiting event fired");
+    const onSuspend = () => console.log("Video suspend event fired");
+    const onError = (e: Event) => {
+      console.error("Video error event fired:", e);
+      console.error("Video error details:", videoElement.error);
+      setVideoError(true);
+    };
 
-        videoElement.addEventListener('loadstart', () => logEvent('loadstart'));
-        videoElement.addEventListener('loadeddata', () => logEvent('loadeddata'));
-        videoElement.addEventListener('loadedmetadata', () => logEvent('loadedmetadata'));
-        videoElement.addEventListener('canplay', () => logEvent('canplay'));
-        videoElement.addEventListener('canplaythrough', () => {
-        logEvent('canplaythrough');
-        setVideoLoaded(true);
-        });
-        videoElement.addEventListener('playing', () => logEvent('playing'));
-        videoElement.addEventListener('waiting', () => logEvent('waiting'));
-        videoElement.addEventListener('suspend', () => logEvent('suspend'));
+    // Add all event listeners
+    videoElement.addEventListener('loadstart', onLoadStart);
+    videoElement.addEventListener('loadeddata', onLoadedData);
+    videoElement.addEventListener('loadedmetadata', onLoadedMetadata);
+    videoElement.addEventListener('canplay', onCanPlay);
+    videoElement.addEventListener('canplaythrough', onCanPlayThrough);
+    videoElement.addEventListener('playing', onPlaying);
+    videoElement.addEventListener('waiting', onWaiting);
+    videoElement.addEventListener('suspend', onSuspend);
+    videoElement.addEventListener('error', onError);
 
-        videoElement.addEventListener('error', (err) => {
-        console.error('Video error:', err);
-        setVideoError(true);
-        });
-
-        // Force video preload to auto
-        videoElement.preload = 'auto';
-
-        // Try to play the video
+    // Try to play the video
     const playVideo = async () => {
-    try {
-        console.log('Attempting to load and play the video');
+      try {
+        console.log("📽️ Forcing video load and play");
         videoElement.load();
+        
         const playPromise = videoElement.play();
         if (playPromise !== undefined) {
-        playPromise
+          playPromise
             .then(() => {
-            console.log('Video is playing');
+              console.log("✅ Video is now playing successfully");
             })
             .catch(err => {
-            console.error('Video play failed:', err);
-            setVideoError(true);
+              console.error("❌ Video play failed:", err);
+              // Try again after a delay
+              setTimeout(() => {
+                console.log("🔄 Trying to play video again...");
+                videoElement.play().catch(e => {
+                  console.error("❌ Second attempt failed:", e);
+                  setVideoError(true);
+                });
+              }, 1000);
             });
         }
-    } catch (err) {
-        console.error('Video load/play error:', err);
+      } catch (err) {
+        console.error("❌ Video load/play error:", err);
         setVideoError(true);
-    }
+      }
     };
 
-        playVideo();
+    playVideo();
 
-        // Clean up
-        return () => {
-        if (videoElement) {
-            videoElement.pause();
-            videoElement.src = '';
-            videoElement.load();
-            console.log('Video cleanup done');
-        }
-        };
-    }, [videoSrc]);
+    // Cleanup
+    return () => {
+      videoElement.removeEventListener('loadstart', onLoadStart);
+      videoElement.removeEventListener('loadeddata', onLoadedData);
+      videoElement.removeEventListener('loadedmetadata', onLoadedMetadata);
+      videoElement.removeEventListener('canplay', onCanPlay);
+      videoElement.removeEventListener('canplaythrough', onCanPlayThrough);
+      videoElement.removeEventListener('playing', onPlaying);
+      videoElement.removeEventListener('waiting', onWaiting);
+      videoElement.removeEventListener('suspend', onSuspend);
+      videoElement.removeEventListener('error', onError);
+      
+      videoElement.pause();
+      videoElement.removeAttribute('src');
+      videoElement.load();
+    };
+  }, [videoSrc]);
 
-    return (
-        <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
-        {/* Dark overlay to ensure content readability */}
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+  return (
+    <>
+      {/* This div needs to be the first child in the DOM for proper z-index stacking */}
+      <div className="fixed top-0 left-0 w-full h-full" style={{ zIndex: -100 }}>
+        {/* Dark overlay with medium opacity */}
+        <div className="absolute inset-0 bg-black/50" style={{ zIndex: -98 }}></div>
         
-        {/* Show loading indicator until video plays */}
-        {!videoLoaded && !videoError && (
-            <div className="absolute inset-0 bg-black flex items-center justify-center z-5">
-            <div className="w-16 h-16 border-4 border-t-transparent border-purple-500 rounded-full animate-spin"></div>
-            </div>
-        )}
-        
-        {/* Video background */}
+        {/* Video element */}
         <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={`absolute inset-0 w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-            style={{ transition: 'opacity 1s ease' }}
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: -99 }}
         >
-            <source src={videoSrc} type="video/mp4" />
-            {/* No fallback content inside video - we'll handle fallback separately */}
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         
-        {/* Fallback image shown only if there's an error */}
+        {/* Fallback image for errors */}
         {videoError && fallbackImageSrc && (
-            <img 
+          <img 
             src={fallbackImageSrc} 
             alt="Background" 
-            className="absolute inset-0 w-full h-full object-cover z-0" 
-            />
+            className="absolute inset-0 w-full h-full object-cover" 
+            style={{ zIndex: -99 }}
+          />
         )}
+      </div>
+      
+      {/* Debugging information - only visible in development */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed top-2 left-2 bg-black/70 text-white text-xs p-2 rounded z-50">
+          Video Status: {videoLoaded ? '✅ Loaded' : videoError ? '❌ Error' : '⏳ Loading...'}
+          <br />
+          Source: {videoSrc.split('/').pop()}
         </div>
-    );
-    };
+      )}
+    </>
+  );
+};
 
-    export default VideoBackground;
+export default VideoBackground;
