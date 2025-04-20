@@ -1,20 +1,121 @@
 // src/pages/Home.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 // Import community images
-import communityImage1 from '@/assets/community/1.png';
-import communityImage2 from '@/assets/community/2.png';
+import communityImage1 from '@/assets/community/5.png';
+import communityImage2 from '@/assets/community/10.png';
 import communityImage3 from '@/assets/community/3.jpg';
-import communityImage4 from '@/assets/community/4.jpg';
-import communityImage5 from '@/assets/community/5.png';
-import communityImage6 from '@/assets/community/6.jpg';
+import communityImage4 from '@/assets/community/2.png';
+import communityImage5 from '@/assets/community/11.png';
+import communityImage6 from '@/assets/community/9.png';
+
+interface ServerStatus {
+  status: 'online' | 'offline';
+  members: number;
+  membersOnline: number;
+}
 
 const Home: React.FC = () => {
+
+  const [serverStatus, setServerStatus] = useState<ServerStatus>({
+    status: 'offline',
+    members: 0,
+    membersOnline: 0
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServerStatus = async () => {
+      try {
+        // Replace with your actual Discord server ID and bot token
+        const response = await axios.get(
+          `https://discord.com/api/v10/guilds/REPLACE_WITH_YOUR_SERVER_ID/widget.json`,
+          {
+            headers: {
+              'Authorization': `Bot REPLACE_WITH_YOUR_BOT_TOKEN`
+            }
+          }
+        );
+
+        setServerStatus({
+          status: 'online',
+          members: response.data.member_count || 0,
+          membersOnline: response.data.presence_count || 0
+        });
+      } catch (error) {
+        console.error('Failed to fetch Discord server status:', error);
+        setServerStatus({
+          status: 'offline',
+          members: 0,
+          membersOnline: 0
+        });
+      } finally {
+        setIsLoading(false);
+    }
+  };
+
+  // Fetch status every 5 minutes
+  fetchServerStatus();
+  const intervalId = setInterval(fetchServerStatus, 5 * 60 * 1000);
+
+  // Cleanup interval on component unmount
+  return () => clearInterval(intervalId);
+}, []);
+
   return (
     <div>
       <Hero />
+
+            {/* Server Status Section */}
+            <section className="py-8 sm:py-12 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-xl p-6 sm:p-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-4 sm:mb-6">
+              VENTY ROLEPLAY SERVER STATUS
+            </h2>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <StatusCard 
+                label="Server Status" 
+                value={isLoading ? 'Loading...' : serverStatus.status === 'online' ? 'Online' : 'Offline'}
+                icon={serverStatus.status === 'online' ? '🟢' : '🔴'}
+                loading={isLoading}
+              />
+              <StatusCard 
+                label="Total Members" 
+                value={isLoading ? 'Loading...' : serverStatus.members.toLocaleString()}
+                icon="👥"
+                loading={isLoading}
+              />
+              <StatusCard 
+                label="Online Members" 
+                value={isLoading ? 'Loading...' : serverStatus.membersOnline.toLocaleString()}
+                icon="💻"
+                loading={isLoading}
+              />
+              <StatusCard 
+                label="Server Uptime" 
+                value="24/7" 
+                icon="⏳"
+              />
+            </div>
+            
+            <div className="mt-6 text-center">
+              <a
+                href="https://discord.gg/Pv77Upbptx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+              >
+                Join Our Discord
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-black">
@@ -143,19 +244,19 @@ const Home: React.FC = () => {
 
           <div className="max-w-4xl mx-auto">
             <UpdateCard
-              date="April 12, 2025"
-              title="New Casino Heist Update"
-              description="We've added a fully interactive casino heist with multiple approach options, custom animations, and high-value rewards."
+              date="April 14, 2025"
+              title="Apartment Update"
+              description="Apartment has been updated with new lobby (Near Red-Parking). House Robbery difficulties reduced."
             />
             <UpdateCard
-              date="April 5, 2025"
+              date="March 29, 2025"
               title="Police Department Expansion"
-              description="The LSPD has been expanded with new ranks, vehicles, and a completely redesigned interior with custom props and interactions."
+              description="Added new petshop. Added new K9 unit for police."
             />
             <UpdateCard
-              date="March 28, 2025"
-              title="Economy Rebalance"
-              description="We've rebalanced the economy to provide better income scaling, reduced inflation, and more rewarding progression."
+              date="March 24, 2025"
+              title="New Heist"
+              description="Added new yacht heist. "
             />
           </div>
 
@@ -199,6 +300,22 @@ const UpdateCard: React.FC<{
     <div className="text-xs sm:text-sm text-orange-400 mb-1">{date}</div>
     <h3 className="text-base sm:text-xl font-semibold text-white mb-1 sm:mb-2">{title}</h3>
     <p className="text-gray-400 text-sm sm:text-base">{description}</p>
+  </div>
+);
+
+
+const StatusCard: React.FC<{
+  label: string;
+  value: string;
+  icon: string;
+  loading?: boolean;
+}> = ({ label, value, icon, loading = false }) => (
+  <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30 flex flex-col items-center">
+    <div className="text-3xl mb-2">{icon}</div>
+    <p className="text-gray-400 text-sm mb-1">{label}</p>
+    <p className={`font-bold text-lg ${loading ? 'animate-pulse text-gray-500' : 'text-white'}`}>
+      {value}
+    </p>
   </div>
 );
 
