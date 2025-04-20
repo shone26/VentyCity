@@ -33,7 +33,7 @@ const JoinUs: React.FC = () => {
                   </ul>
                   <div className="pt-4">
                     <a
-                      href="https://discord.gg/Pv77Upbptx"
+                      href="https://discord.gg/kmNHZUDg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
@@ -55,7 +55,7 @@ const JoinUs: React.FC = () => {
                     <li>A legal copy of GTA V for PC (Steam, Epic Games, or Rockstar)</li>
                     <li>The latest version of FiveM client</li>
                     <li>At least 120GB of free disk space</li>
-                    <li>Recommended: 16GB RAM and a quad-core processor</li>
+                    <li>Recommended: 12GB RAM and a quad-core processor</li>
                   </ul>
                   <div className="pt-4">
                     <a
@@ -77,7 +77,7 @@ const JoinUs: React.FC = () => {
               >
                 <div className="space-y-4 mt-6">
                   <p className="text-gray-400">
-                    Access the whitelist application through our Discord in the #whitelist-application channel. The application includes:
+                    Access the whitelist application through our Discord in the 〖📝〗whitelist-application channel. The application includes:
                   </p>
                   <ul className="list-disc list-inside text-gray-400 space-y-2">
                     <li>Basic information about you and your RP experience</li>
@@ -101,7 +101,7 @@ const JoinUs: React.FC = () => {
                   <ol className="list-decimal list-inside text-gray-400 space-y-2">
                     <li>Open FiveM client</li>
                     <li>Click on "Favorites" tab</li>
-                    <li>Click "Add Server" and enter: <span className="bg-gray-800 px-2 py-1 rounded">cfx.re/join/venty</span></li>
+                    <li>Click "Add Server" and enter: <span className="bg-gray-800 px-2 py-1 rounded">https://cfx.re/join/zeex4p</span></li>
                     <li>Or search for "VENTY Roleplay" in the server browser</li>
                     <li>Click Connect and wait for resources to download</li>
                   </ol>
@@ -134,7 +134,7 @@ const JoinUs: React.FC = () => {
                 </div>
               </StepItem>
 
-              <StepItem
+              {/* <StepItem
                 number="06"
                 title="Attend Newcomer Orientation"
                 description="Join our optional but recommended orientation session to get familiar with the server."
@@ -153,7 +153,7 @@ const JoinUs: React.FC = () => {
                     Check the #orientation-schedule channel on Discord for the next available session.
                   </p>
                 </div>
-              </StepItem>
+              </StepItem> */}
             </div>
 
             {/* Additional Resources */}
@@ -161,7 +161,7 @@ const JoinUs: React.FC = () => {
               <h3 className="text-2xl font-bold text-orange-400 mb-6">Additional Resources</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <ResourceCard
+                {/* <ResourceCard
                   title="Beginner's Guide"
                   description="A comprehensive guide to help new players understand the VENTY Roleplay experience."
                   link="#"
@@ -172,8 +172,14 @@ const JoinUs: React.FC = () => {
                   description="List of all available commands and their functions to help you navigate the server."
                   link="#"
                   linkText="View Commands"
-                />
+                /> */}
                 <ResourceCard
+                  title="Rule Guide"
+                  description="A comprehensive guide to the community rules and guidelines to ensure a respectful and enjoyable experience for all members"
+                  link="/rules"
+                  linkText="View Rules"
+                />
+                {/* <ResourceCard
                   title="Economy Guide"
                   description="Learn how to make money, buy properties, and thrive in our economy system."
                   link="#"
@@ -184,7 +190,7 @@ const JoinUs: React.FC = () => {
                   description="New to roleplay? This guide covers the basics of creating compelling RP scenarios."
                   link="#"
                   linkText="Start Learning"
-                />
+                /> */}
               </div>
             </div>
 
@@ -197,7 +203,7 @@ const JoinUs: React.FC = () => {
                 Our community is here to help you every step of the way. If you have any questions or need assistance, don't hesitate to reach out!
               </p>
               <a
-                href="https://discord.gg/Pv77Upbptx"
+                href="https://discord.gg/kmNHZUDg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 bg-black/50 backdrop-blur-sm border-2 border-orange-500 text-white rounded-lg font-medium hover:bg-black/70 transition-colors"

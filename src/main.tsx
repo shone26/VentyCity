@@ -17,6 +17,7 @@ import RootLayout from './components/RootLayout';
 import { ViewportProvider } from './contexts/ViewportContext';
 import VideoDebug from './components/VideoDebug';
 import VideoTestPage from './pages/VideoTestPage';
+import BilingualRules from './pages/BilingualRules'; // Import the new page
 
 // Define the router with TypeScript
 const router = createBrowserRouter([
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
         element: <Gallery />,
       },
     ],
+  },
+  // Add a standalone route for BilingualRules
+  {
+    path: "/bilingual-rules",
+    element: <BilingualRules />,
   },
   // Add a standalone debug route
   {
