@@ -3,23 +3,24 @@ import React from 'react';
 import Hero from '../components/Hero';
 import StaffCard from '../components/StaffCard';
 
-import randy from '@/assets/avatars/randi.png';
-import dk from '@/assets/avatars/dk.gif'
-import soul from '@/assets/avatars/soul.gif'
-import wije from '@/assets/avatars/wade.gif'
-import shiran from '@/assets/avatars/shiran.gif'
-import shone from '@/assets/avatars/shone.jpg'
-import error from '@/assets/avatars/error.png'
-import pancha from '@/assets/avatars/pancha.jpg'
-import beast from '@/assets/avatars/beastube.png'
-import chanux from '@/assets/avatars/chanux.png'
-import pheonix from '@/assets/avatars/phenix.png'
-import sparrow from '@/assets/avatars/sparrow.png'
-import costa from '@/assets/avatars/costa.png'
-import clouds from '@/assets/avatars/clouds.png'
-import designer from '@/assets/avatars/designer.png'
-import j7 from '@/assets/avatars/g7.png'
-import sonu from '@/assets/avatars/sonu.png'
+const randy = 'https://i.ibb.co/0RGXLpmj/randi.png';
+const dk = 'https://i.ibb.co/7d28hfJn/dk.gif';
+const soul = 'https://i.ibb.co/xSkLKZhg/soul.gif';
+const wije = 'https://i.ibb.co/5hhWqtRQ/wade.gif';
+const shiran = 'https://i.ibb.co/JjYrkvj0/shiran.gif';
+const shone = 'https://i.ibb.co/GQ1XmVjR/shone.jpg';
+const error = 'https://i.ibb.co/RpWxhpPZ/error.png';
+const pancha = 'https://i.ibb.co/0jkPHVbY/pancha.jpg';
+const beast = 'https://i.ibb.co/PZQL7WGh/beastube.png';
+const chanux = 'https://i.ibb.co/dJ3LgZ1R/chanux.png';
+const pheonix = 'https://i.ibb.co/pjgFC4S2/phenix.png';
+const sparrow = 'https://i.ibb.co/Xfy2thhh/sparrow.png';
+const costa = 'https://i.ibb.co/VcHTXfnY/costa.png';
+const clouds = 'https://i.ibb.co/mCgrY7zX/clouds.png';
+const designer = 'https://i.ibb.co/v4Nmt0gv/designer.png';
+const j7 = 'https://i.ibb.co/VcHTXfnY/g7.png';  // Note: Check if this is the correct g7.png
+const sonu = 'https://i.ibb.co/rGTFFyXM/sonu.png';
+
 
 
 const Staff: React.FC = () => {
