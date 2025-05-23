@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 
 const randy = 'https://i.ibb.co/0RGXLpmj/randi.png';
 const sonu = 'https://i.ibb.co/rGTFFyXM/sonu.png';
-import beeztube from '@/assets/avatars/beeztube.png';
-import beastube from '@/assets/avatars/beastube.png';
+
+const beastube = 'https://i.ibb.co/PZQL7WGh/beastube.png';
+const beeztube = 'https://i.ibb.co/wrJ3Q025/beeztube.png';
 
 
 const About: React.FC = () => {
