@@ -1,8 +1,9 @@
 // src/main.tsx
+
 import './index.css'
-import './styles/responsive-fixes.css'
-import './styles/responsive-utils.css'
-import './styles/animation.css'
+// import './styles/responsive-fixes.css'
+// import './styles/responsive-utils.css'
+// import './styles/animation.css'
 
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -18,6 +19,7 @@ import { ViewportProvider } from './contexts/ViewportContext';
 import VideoDebug from './components/VideoDebug';
 import VideoTestPage from './pages/VideoTestPage';
 import BilingualRules from './pages/BilingualRules'; // Import the new page
+
 
 // Define the router with TypeScript
 const router = createBrowserRouter([

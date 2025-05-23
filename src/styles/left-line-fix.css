@@ -1,0 +1,167 @@
+/* Fix for the white vertical line on the left side */
+
+/* Remove any default margins and padding that might cause white space */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background-color: #000000 !important;
+  }
+  
+  /* Ensure the root div takes full width */
+  #root {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    min-height: 100vh !important;
+    background-color: #000000 !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Fix for the main container */
+  .min-h-screen {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background-color: transparent !important;
+  }
+  
+  /* Remove any left borders or margins from the main layout */
+  main {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
+  
+  /* Fix for container classes that might have white space */
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Specific fix for the video background container */
+  .video-background,
+  .fixed {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Fix for any flex containers that might create white space */
+  .flex {
+    margin: 0 !important;
+  }
+  
+  .flex-col {
+    margin: 0 !important;
+  }
+  
+  /* Remove any potential white borders from the layout wrapper */
+  .flex.flex-col.min-h-screen {
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+  
+  /* Hide scrollbars that might appear as white lines */
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  
+  /* Firefox scrollbar */
+  html {
+    scrollbar-width: none !important;
+  }
+  
+  /* IE scrollbar */
+  body {
+    -ms-overflow-style: none !important;
+  }
+  
+  /* Ensure no white space from the RootLayout component */
+  .tablet-view {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  /* Fix for any potential white outline or focus rings */
+  * {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  *:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Ensure the hero section doesn't have white margins */
+  .hero-container {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Fix for any absolute positioned elements */
+  .absolute,
+  .fixed {
+    left: 0 !important;
+  }
+  
+  /* Remove any potential white space from grid containers */
+  .grid {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure sections take full width */
+  section {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  /* Fix for any white space in the navigation */
+  header {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Force remove any white background that might appear as a line */
+  .bg-white,
+  .text-white {
+    background-color: transparent !important;
+  }
+  
+  /* Specific fix for viewport units */
+  .w-full {
+    width: 100vw !important;
+    margin-left: 0 !important;
+  }
+  
+  .h-full {
+    margin: 0 !important;
+  }
+  
+  /* Fix for any potential white space from the router outlet */
+  .router-outlet {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }

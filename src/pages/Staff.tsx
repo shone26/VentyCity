@@ -1,8 +1,7 @@
-// src/pages/Staff.tsx
+
 import React from 'react';
 import Hero from '../components/Hero';
 import StaffCard from '../components/StaffCard';
-
 
 import randy from '@/assets/avatars/randi.png';
 import dk from '@/assets/avatars/dk.gif'
@@ -11,6 +10,17 @@ import wije from '@/assets/avatars/wade.gif'
 import shiran from '@/assets/avatars/shiran.gif'
 import shone from '@/assets/avatars/shone.jpg'
 import error from '@/assets/avatars/error.png'
+import pancha from '@/assets/avatars/pancha.jpg'
+import beast from '@/assets/avatars/beastube.png'
+import chanux from '@/assets/avatars/chanux.png'
+import pheonix from '@/assets/avatars/phenix.png'
+import sparrow from '@/assets/avatars/sparrow.png'
+import costa from '@/assets/avatars/costa.png'
+import clouds from '@/assets/avatars/clouds.png'
+import designer from '@/assets/avatars/designer.png'
+import j7 from '@/assets/avatars/g7.png'
+import sonu from '@/assets/avatars/sonu.png'
+
 
 const Staff: React.FC = () => {
   return (
@@ -39,9 +49,8 @@ const Staff: React.FC = () => {
                 SERVER OWNERS
               </h2>
 
-              {/* Changed from grid to flex layout with center alignment */}
               <div className="flex justify-center">
-                <div className="max-w-md"> {/* Added a container with max width  max-w-md max-w-sm max-w-xs max-w-lg*/}
+                <div className="max-w-md">
                   <StaffCard
                     name="ⓥ RanDiNeX"
                     role="Founder & Lead Developer"
@@ -55,40 +64,42 @@ const Staff: React.FC = () => {
               </div>
             </div>
 
-            {/* Development Team */}
+            
+
+            {/* Management Team */}
             <div className="mb-12 sm:mb-16 md:mb-20">
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 MANAGEMENT TEAM 
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-              <StaffCard
-                    name="D_D_K"
-                    role="Lead Script Developer"
-                    description="Creates and maintains custom scripts and game mechanics that make VENTY unique."
-                    discord={{ username: "dk.kratos", link: "https://discordapp.com/users/828968509420732446" }}
-                    joinDate="June 2024"
-                    avatar={dk}
-                    gradient="from-orange-500 to-purple-600"
-                  />
                 <StaffCard
-                    name="DevsDoOpStuff"
-                    role="Lead Anti-Cheat Master"
-                    description="Develops and implements advanced anti-cheat systems to ensure a fair and secure gaming environment."
-                    discord={{ username: "wijest_18995", link: "https://discordapp.com/users/1246333985597161472" }}
-                    joinDate="January 2025"
-                    avatar={wije}
-                    gradient="from-orange-500 to-purple-600"
-                  />
+                  name="D_D_K"
+                  role="Lead Script Developer"
+                  description="Creates and maintains custom scripts and game mechanics that make VENTY unique."
+                  discord={{ username: "dk.kratos", link: "https://discordapp.com/users/828968509420732446" }}
+                  joinDate="June 2024"
+                  avatar={dk}
+                  gradient="from-orange-500 to-purple-600"
+                />
                 <StaffCard
-                    name="soul"
-                    role="Lead Map & Asset Developer"
-                    description="Creates custom buildings, interiors, and map modifications to enhance the city environment."
-                    discord={{ username: "darksoulbestt", link: "https://discordapp.com/users/1046107593501851788" }}
-                    joinDate="July 2024"
-                    avatar={soul}
-                    gradient="from-orange-500 to-purple-600"
-                  />
+                  name="DevsDoOpStuff"
+                  role="Lead Anti-Cheat Master"
+                  description="Develops and implements advanced anti-cheat systems to ensure a fair and secure gaming environment."
+                  discord={{ username: "wijest_18995", link: "https://discordapp.com/users/1246333985597161472" }}
+                  joinDate="January 2025"
+                  avatar={wije}
+                  gradient="from-orange-500 to-purple-600"
+                />
+                <StaffCard
+                  name="soul"
+                  role="Lead Map & Asset Developer"
+                  description="Creates custom buildings, interiors, and map modifications to enhance the city environment."
+                  discord={{ username: "darksoulbestt", link: "https://discordapp.com/users/1046107593501851788" }}
+                  joinDate="July 2024"
+                  avatar={soul}
+                  gradient="from-orange-500 to-purple-600"
+                />
               </div>
             </div>
 
@@ -98,36 +109,74 @@ const Staff: React.FC = () => {
                 ADMINISTRATION TEAM
               </h2>
 
-              <div className="flex justify-center">
-              <div className="max-w-md">
-              <StaffCard
+              <div className="flex justify-center mb-8 sm:mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                  <StaffCard
                     name="ꌗꃅꀤꋪꍏꈤ"
                     role="Head Administrator"
                     description="Leads the admin team and handles major server decisions, disputes, and policy enforcement."
                     discord={{ username: "shiran8999", link: "https://discordapp.com/users/1107929243830194236" }}
                     joinDate="April 2025"
                     avatar={shiran}
-                    gradient="from-orange-500 to-purple-600"
+                    gradient="from-red-500 to-purple-600"
                   />
-                  </div>
-                {/* <StaffCard
-                  name="Enforcer"
-                  role="Senior Administrator"
-                  description="Oversees rule enforcement, handles appeals, and manages the moderation team."
-                  discord="Enforcer#1122"
-                  joinDate="April 2023"
-                  avatar="/api/placeholder/200/200"
+                                    <StaffCard
+                    name="Cari Nariya"
+                    role="Head Administrator"
+                    description="Leads the admin team and handles major server decisions, disputes, and policy enforcement."
+                    discord={{ username: "naripencha", link: "https://discordapp.com/users/1228046867645075488" }}
+                    joinDate="April 2025"
+                    avatar={pancha}
+                    gradient="from-red-500 to-purple-600"
+                  />
+                  
+                </div>
+              </div>
+
+              {/* Junior Administrators */}
+              <h3 className="text-xl sm:text-2xl font-bold text-center text-orange-400 mb-6 sm:mb-8">
+                Junior Administrators
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <StaffCard
+                  name="AdminHelper"
+                  role="Junior Administrator"
+                  description="Assists with administrative duties, handles player appeals, and supports the Head Administrator in daily operations."
+                  discord="adminhelper#1234"
+                  joinDate="May 2024"
+                  avatar={beast}
                   gradient="from-red-500 to-purple-600"
                 />
                 <StaffCard
-                  name="Harmony"
-                  role="Community Administrator"
-                  description="Manages community events, coordinates between departments, and oversees server activities."
-                  discord="Harmony#3344"
-                  joinDate="June 2023"
-                  avatar="/api/placeholder/200/200"
+                  name="RuleKeeper"
+                  role="Junior Administrator"
+                  description="Focuses on rule enforcement, policy implementation, and ensuring fair gameplay across all server activities."
+                  discord="rulekeeper#5678"
+                  joinDate="June 2024"
+                  avatar={chanux}
                   gradient="from-red-500 to-purple-600"
-                /> */}
+                />
+              </div>
+            </div>
+
+            {/* Web Development Team */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
+                WEB DEVELOPMENT TEAM
+              </h2>
+
+              <div className="flex justify-center">
+                <div className="max-w-md">
+                  <StaffCard
+                    name="24 - DAVID"
+                    role="Web Developer"
+                    description="Develops and maintains our website, community portals, and online infrastructure to enhance the player experience."
+                    discord={{ username: "shone4105", link: "https://discordapp.com/users/1060249054111613048" }}
+                    joinDate="July 2024"
+                    avatar={shone}
+                    gradient="from-blue-500 to-cyan-600"
+                  />
+                </div>
               </div>
             </div>
 
@@ -138,9 +187,19 @@ const Staff: React.FC = () => {
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <StaffCard
+                  name="SONU-ソヌ"
+                  role="Moderator"
+                  description="Specializes in helping new players and answering common questions."
+                  discord={{ username: "pnx_17", link: "https://discordapp.com/users/1017906707252383764" }}
+                  joinDate="April 2025"
+                  avatar={sonu}
+                  gradient="from-green-500 to-blue-600"
+                  compact
+                />
                 <StaffCard
                   name="𝙴𝚁𝚁𝙾𝚁_404"
-                  role="Senior Moderator"
+                  role="Moderator"
                   description="Oversees the moderation team and handles escalated player reports."
                   discord={{ username: "draven_fd", link: "https://discordapp.com/users/1338938971790774283" }}
                   joinDate="July 2024"
@@ -149,82 +208,70 @@ const Staff: React.FC = () => {
                   compact
                 />
                 <StaffCard
-                  name="24 - DAVID"
-                  role="Senior Moderator (Web)"
-                  description="Responsible for overseeing and managing web-related community interactions, ensuring a positive and respectful environment. Specializes in resolving technical issues and maintaining community guidelines."
-                  discord={{ username: "shone4105", link: "https://discordapp.com/users/1060249054111613048" }}
-                  joinDate="July 2024"
-                  avatar={shone}
-                  gradient="from-green-500 to-blue-600"
-                  compact
-                />
-                <StaffCard
-                  name="Peacekeeper"
+                  name="Ⓥ AllClouds.lk"
                   role="Moderator"
                   description="Handles player reports, resolves conflicts, and enforces server rules."
-                  discord="Peacekeeper#9900"
-                  joinDate="September 2023"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "spblacka", link: "https://discordapp.com/users/848736173643137094" }}
+                  joinDate="August 2024"
+                  avatar={clouds}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
                 <StaffCard
-                  name="Watcher"
+                  name="Sparrow"
                   role="Moderator"
                   description="Monitors in-game activity and assists players with immediate issues."
-                  discord="Watcher#1234"
-                  joinDate="October 2023"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "sparrow1090", link: "https://discordapp.com/users/1141023705355522088" }}
+                  joinDate="April 2025"
+                  avatar={sparrow}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-4 sm:mt-6">
                 <StaffCard
-                  name="Observer"
-                  role="Junior Moderator"
+                  name="Ⓥ Costa"
+                  role="Moderator"
                   description="Assists with player tickets and basic moderation duties."
-                  discord="Observer#5678"
-                  joinDate="November 2023"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "draven_fd", link: "https://discordapp.com/users/353133769395404800" }}
+                  joinDate="May 2025"
+                  avatar={costa}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
+
                 <StaffCard
-                  name="Protector"
-                  role="Junior Moderator"
+                  name="Ⓥ Designer"
+                  role="Moderator"
                   description="Handles routine moderation tasks and newcomer assistance."
-                  discord="Protector#9012"
-                  joinDate="December 2023"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "gaming_sidu_95316", link: "https://discordapp.com/users/1306106958570459141" }}
+                  joinDate="February 2025"
+                  avatar={designer}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
                 <StaffCard
-                  name="Keeper"
-                  role="Junior Moderator"
+                  name="Ⓥg7.streams"
+                  role="Moderator"
                   description="Focuses on ensuring a positive community atmosphere and player experience."
-                  discord="Keeper#3456"
-                  joinDate="January 2024"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "g7.streams", link: "https://discordapp.com/users/774833437520953354" }}
+                  joinDate="September 2024"
+                  avatar={j7}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
                 <StaffCard
-                  name="Guardian2"
-                  role="Junior Moderator"
+                  name="PhoeNiX 𖤍"
+                  role="Moderator"
                   description="Specializes in helping new players and answering common questions."
-                  discord="Guardian2#7890"
-                  joinDate="February 2024"
-                  avatar="/api/placeholder/200/200"
+                  discord={{ username: "pnx_17", link: "https://discordapp.com/users/773202221109477386" }}
+                  joinDate="April 2025"
+                  avatar={pheonix}
                   gradient="from-green-500 to-blue-600"
                   compact
                 />
               </div>
             </div>
 
-            {/* Support Team */}
+            {/* Support Team
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 SUPPORT TEAM
@@ -272,7 +319,7 @@ const Staff: React.FC = () => {
                   compact
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Join the Team */}
             <div className="mt-12 sm:mt-16 md:mt-20 p-4 sm:p-8 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-purple-500/30">
@@ -287,6 +334,7 @@ const Staff: React.FC = () => {
                     <li>Work with a friendly and supportive team</li>
                     <li>Help shape the future of VENTY Roleplay</li>
                     <li>Exclusive staff perks and recognition</li>
+                    <li>Opportunities in web development, game development, and community management</li>
                   </ul>
                 </div>
                 <div className="md:w-1/3 flex justify-center">

@@ -230,7 +230,7 @@ const StepItem: React.FC<{
       <div className="bg-gradient-to-r from-orange-500 to-purple-600 text-white text-4xl font-bold w-16 h-16 flex items-center justify-center rounded-full">
         {number}
       </div>
-      <div className="hidden md:block w-px h-full bg-purple-500/30 ml-8 -my-6"></div>
+      {/* <div className="hidden md:block w-px h-full bg-purple-500/30 ml-8 -my-6"></div> */}
     </div>
     <div className="flex-grow">
       <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
