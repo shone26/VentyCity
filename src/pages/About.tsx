@@ -3,10 +3,11 @@ import React from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
 
-import randy from '@/assets/avatars/randi.png';
+const randy = 'https://i.ibb.co/0RGXLpmj/randi.png';
+const sonu = 'https://i.ibb.co/rGTFFyXM/sonu.png';
 import beeztube from '@/assets/avatars/beeztube.png';
 import beastube from '@/assets/avatars/beastube.png';
-import error from '@/assets/avatars/error.png';
+
 
 const About: React.FC = () => {
   return (
@@ -140,7 +141,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="aspect-square overflow-hidden rounded-lg">
                   <img
-                    src={error}
+                    src={sonu}
                     alt="Street racing event"
                     className="w-full h-full object-cover"
                   />
