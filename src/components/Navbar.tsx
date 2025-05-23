@@ -109,15 +109,16 @@ const Navbar: React.FC = () => {
             <NavLink to="/join" isActive={isActive("/join")}>Join</NavLink>
             <NavLink to="/staff" isActive={isActive("/staff")}>Staff</NavLink>
             <NavLink to="/gallery" isActive={isActive("/gallery")}>Gallery</NavLink>
-            <a 
+
+          </nav>
+          <a 
               href="https://discord.gg/Pv77Upbptx" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-3 py-2 text-sm bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
-            >
+            >   
               Join Discord
             </a>
-          </nav>
         </div>
 
         {/* Mobile Menu (including tablet view) */}
@@ -162,9 +163,9 @@ const NavLink: React.FC<{
 }> = ({ to, children, isActive }) => (
   <Link
     to={to}
-    className={`text-white text-sm lg:text-base font-medium transition-colors relative ${
+    className={`text-sm lg:text-base font-medium transition-colors relative ${
       isActive 
-        ? 'text-orange-400' 
+        ? 'text-[#646cff]' 
         : 'hover:text-orange-400'
     }`}
   >

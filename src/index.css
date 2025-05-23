@@ -49,7 +49,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-a {
+nav {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
