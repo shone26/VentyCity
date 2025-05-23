@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({
       
       <div className={`relative container mx-auto px-4 ${isTabletView ? 'pt-16 pb-10' : 'pt-24 sm:pt-32 pb-20'} ${isTabletView ? 'h-screen' : 'min-h-screen'} flex flex-col justify-center items-center text-center z-10`}>
         <img 
-          src="/src/assets/images/logo.png" 
+          src="https://i.ibb.co/rRtvhsGK/Venty-Logo.png" 
           alt="VENTY Roleplay" 
           className={`${isTabletView ? 'w-48 mb-4' : 'w-4/5 sm:w-3/4 max-w-md mb-6 sm:mb-8'} animate-pulse hero-logo`}
         />
