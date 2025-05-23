@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // Import community images
-import communityImage1 from '@/assets/community/5.png';
-import communityImage2 from '@/assets/community/10.png';
-import communityImage3 from '@/assets/community/3.jpg';
-import communityImage4 from '@/assets/community/2.png';
-import communityImage5 from '@/assets/community/11.png';
-import communityImage6 from '@/assets/community/9.png';
+const communityImage1 = 'https://i.ibb.co/m7X3VXM/1.png';
+const communityImage2 = 'https://i.ibb.co/svdvDVth/2.png';
+const communityImage3 = 'https://i.ibb.co/TxDWNZVF/3.jpg';
+const communityImage4 = 'https://i.ibb.co/fVcVWfKm/4.jpg';
+const communityImage5 = 'https://i.ibb.co/zTK38mg1/5.png';
+const communityImage6 = 'https://i.ibb.co/nNVT1615/6.jpg';
+
+
 
 interface ServerStatus {
   status: 'online' | 'offline';
