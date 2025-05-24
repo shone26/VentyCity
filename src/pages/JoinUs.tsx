@@ -93,12 +93,13 @@ const JoinUs: React.FC = () => {
               <StepItem
                 number="03"
                 title="Complete the Whitelist Application"
-                description="We have a simple whitelist process to ensure quality roleplay on our server."
+                description="We have a streamlined whitelist process to ensure quality roleplay on our server."
               >
                 <div className="space-y-4 mt-6">
                   <p className="text-gray-400">
-                    Access the whitelist application through our Discord in the 〖📝〗whitelist-application channel. The application includes:
+                    Submit your whitelist application through our dedicated web portal. Simply visit the link below and navigate to the <strong>Applications</strong> section in the navigation bar to find the <strong>Whitelist Application</strong>.
                   </p>
+                  <h4 className="text-orange-400 font-semibold">The application includes:</h4>
                   <ul className="list-disc list-inside text-gray-400 space-y-2">
                     <li>Basic information about you and your RP experience</li>
                     <li>A few roleplay scenarios to assess your RP skills</li>
@@ -108,6 +109,16 @@ const JoinUs: React.FC = () => {
                   <p className="text-gray-400 pt-2">
                     Applications are typically reviewed within 24-48 hours by our staff team.
                   </p>
+                  <div className="pt-4">
+                    <a
+                      href="https://venty-web-portal.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+                    >
+                      Access Application Portal
+                    </a>
+                  </div>
                 </div>
               </StepItem>
 
@@ -193,7 +204,6 @@ const JoinUs: React.FC = () => {
   );
 };
 
-// Helper Components
 const StepItem: React.FC<{
   number: string;
   title: string;
@@ -202,7 +212,7 @@ const StepItem: React.FC<{
   id?: string; // Add optional id prop
 }> = ({ number, title, description, children, id }) => (
   <div className="flex flex-col md:flex-row gap-6" id={id}> {/* Add id to the div */}
-    <div className="flex-shrink-0 flex items-start md:items-center">
+    <div className="flex-shrink-0 flex items-start md:items-start">
       <div className="bg-gradient-to-r from-orange-500 to-purple-600 text-white text-4xl font-bold w-16 h-16 flex items-center justify-center rounded-full">
         {number}
       </div>

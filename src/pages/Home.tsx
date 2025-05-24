@@ -1,8 +1,8 @@
 // src/pages/Home.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 // Import community images
 const communityImage1 = 'https://i.ibb.co/m7X3VXM/1.png';
@@ -12,65 +12,65 @@ const communityImage4 = 'https://i.ibb.co/fVcVWfKm/4.jpg';
 const communityImage5 = 'https://i.ibb.co/zTK38mg1/5.png';
 const communityImage6 = 'https://i.ibb.co/nNVT1615/6.jpg';
 
-interface ServerStatus {
-  status: 'online' | 'offline';
-  members: number;
-  membersOnline: number;
-}
+// interface ServerStatus {
+//   status: 'online' | 'offline';
+//   members: number;
+//   membersOnline: number;
+// }
 
 const Home: React.FC = () => {
 
-  const [serverStatus, setServerStatus] = useState<ServerStatus>({
-    status: 'offline',
-    members: 0,
-    membersOnline: 0
-  });
-  const [isLoading, setIsLoading] = useState(true);
+  // const [serverStatus, setServerStatus] = useState<ServerStatus>({
+  //   status: 'offline',
+  //   members: 0,
+  //   membersOnline: 0
+  // });
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchServerStatus = async () => {
-      try {
-        // Replace with your actual Discord server ID and bot token
-        const response = await axios.get(
-          `https://discord.com/api/v10/guilds/REPLACE_WITH_YOUR_SERVER_ID/widget.json`,
-          {
-            headers: {
-              'Authorization': `Bot REPLACE_WITH_YOUR_BOT_TOKEN`
-            }
-          }
-        );
+  // useEffect(() => {
+  //   const fetchServerStatus = async () => {
+  //     try {
+  //       // Replace with your actual Discord server ID and bot token
+  //       const response = await axios.get(
+  //         `https://discord.com/api/v10/guilds/REPLACE_WITH_YOUR_SERVER_ID/widget.json`,
+  //         {
+  //           headers: {
+  //             'Authorization': `Bot REPLACE_WITH_YOUR_BOT_TOKEN`
+  //           }
+  //         }
+  //       );
 
-        setServerStatus({
-          status: 'online',
-          members: response.data.member_count || 0,
-          membersOnline: response.data.presence_count || 0
-        });
-      } catch (error) {
-        console.error('Failed to fetch Discord server status:', error);
-        setServerStatus({
-          status: 'offline',
-          members: 0,
-          membersOnline: 0
-        });
-      } finally {
-        setIsLoading(false);
-    }
-  };
+    //     setServerStatus({
+    //       status: 'online',
+    //       members: response.data.member_count || 0,
+    //       membersOnline: response.data.presence_count || 0
+    //     });
+    //   } catch (error) {
+    //     console.error('Failed to fetch Discord server status:', error);
+    //     setServerStatus({
+    //       status: 'offline',
+    //       members: 0,
+    //       membersOnline: 0
+    //     });
+    //   } finally {
+    //     setIsLoading(false);
+  //    }
+  // };
 
   // Fetch status every 5 minutes
-  fetchServerStatus();
-  const intervalId = setInterval(fetchServerStatus, 5 * 60 * 1000);
+//   fetchServerStatus();
+//   const intervalId = setInterval(fetchServerStatus, 5 * 60 * 1000);
 
-  // Cleanup interval on component unmount
-  return () => clearInterval(intervalId);
-}, []);
+//   // Cleanup interval on component unmount
+//   return () => clearInterval(intervalId);
+// }, []);
 
   return (
     <div>
       <Hero />
 
       {/* Server Status Section */}
-      <section className="py-8 sm:py-12 bg-black">
+      {/* <section className="py-8 sm:py-12 bg-black">
         <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl sm:text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-4 sm:mb-6">
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-black">
@@ -303,19 +303,19 @@ const UpdateCard: React.FC<{
   </div>
 );
 
-const StatusCard: React.FC<{
-  label: string;
-  value: string;
-  icon: string;
-  loading?: boolean;
-}> = ({ label, value, icon, loading = false }) => (
-  <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30 flex flex-col items-center">
-    <div className="text-3xl mb-2">{icon}</div>
-    <p className="text-gray-400 text-sm mb-1">{label}</p>
-    <p className={`font-bold text-lg ${loading ? 'animate-pulse text-gray-500' : 'text-white'}`}>
-      {value}
-    </p>
-  </div>
-);
+// const StatusCard: React.FC<{
+//   label: string;
+//   value: string;
+//   icon: string;
+//   loading?: boolean;
+// }> = ({ label, value, icon, loading = false }) => (
+//   <div className="bg-black/50 p-4 rounded-lg border border-purple-500/30 flex flex-col items-center">
+//     <div className="text-3xl mb-2">{icon}</div>
+//     <p className="text-gray-400 text-sm mb-1">{label}</p>
+//     <p className={`font-bold text-lg ${loading ? 'animate-pulse text-gray-500' : 'text-white'}`}>
+//       {value}
+//     </p>
+//   </div>
+// );
 
 export default Home;

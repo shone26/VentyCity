@@ -5,11 +5,11 @@ import logo from '../assets/images/logo.png';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-black border-t border-purple-900/30">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Logo and Description */}
           <div className="md:col-span-1">
             <Link to="/" className="inline-block mb-4">
@@ -27,32 +27,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-bold mb-4 text-lg">Quick Links</h3>
-            <ul className="space-y-2">
-              <FooterLink to="/">Home</FooterLink>
-              <FooterLink to="/about">About Us</FooterLink>
-              <FooterLink to="/rules">Server Rules</FooterLink>
-              <FooterLink to="/join">How to Join</FooterLink>
-              <FooterLink to="/staff">Our Team</FooterLink>
-              <FooterLink to="/gallery">Gallery</FooterLink>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="text-white font-bold mb-4 text-lg">Resources</h3>
-            <ul className="space-y-2">
-              <FooterLink to="#" external>Server Status</FooterLink>
-              <FooterLink to="#" external>Patch Notes</FooterLink>
-              <FooterLink to="#" external>Documentation</FooterLink>
-              <FooterLink to="#" external>Development Blog</FooterLink>
-              <FooterLink to="#" external>Community Events</FooterLink>
-              <FooterLink to="#" external>Content Creator Program</FooterLink>
-            </ul>
-          </div>
-
           {/* Contact and Server Info */}
           <div>
             <h3 className="text-white font-bold mb-4 text-lg">Connect With Us</h3>
@@ -68,14 +42,27 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6">
               <strong className="text-orange-400">Players:</strong> <span className="text-green-500">150+</span> online
             </p>
-            <a
+            {/* <a
               href="https://discord.gg/Pv77Upbptx"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm inline-block"
             >
               Join Our Discord
-            </a>
+            </a> */}
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-white font-bold mb-4 text-lg">Quick Links</h3>
+            <ul className="space-y-2">
+              <FooterLink to="/">Home</FooterLink>
+              <FooterLink to="/about">About Us</FooterLink>
+              <FooterLink to="/rules">Server Rules</FooterLink>
+              <FooterLink to="/join">How to Join</FooterLink>
+              <FooterLink to="/staff">Our Team</FooterLink>
+              <FooterLink to="/gallery">Gallery</FooterLink>
+            </ul>
           </div>
         </div>
 
@@ -88,9 +75,9 @@ const Footer: React.FC = () => {
             <Link to="#" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
             <Link to="#" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
             <Link to="#" className="hover:text-gray-300 transition-colors">Content Policy</Link>
-            <a 
-              href="https://fivem.net" 
-              target="_blank" 
+            <a
+              href="https://fivem.net"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors"
             >

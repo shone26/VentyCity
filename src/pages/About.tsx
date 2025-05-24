@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
 
 const randy = 'https://i.ibb.co/0RGXLpmj/randi.png';
-const sonu = 'https://i.ibb.co/rGTFFyXM/sonu.png';
+const sonu = 'https://cdn.discordapp.com/attachments/1374848087855595610/1375563706750079017/Sonu_Gaming.jpg?ex=68322508&is=6830d388&hm=9319bb9f9ce82b0326594a68c3bf686a63c8080b2e1c9061e653d3dc65abfc2e&';
 
 const beastube = 'https://i.ibb.co/PZQL7WGh/beastube.png';
 const beeztube = 'https://i.ibb.co/wrJ3Q025/beeztube.png';
