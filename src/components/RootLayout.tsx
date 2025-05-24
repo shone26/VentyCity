@@ -167,16 +167,6 @@ const RootLayout: React.FC = () => {
           className="absolute inset-0 bg-black/40" 
           style={{ zIndex: 3 }}
         ></div>
-        
-        {/* Debug info (only in development) */}
-        {process.env.NODE_ENV === 'development' && (
-          <div className="fixed top-4 right-4 bg-black/70 text-white text-xs p-2 rounded" style={{ zIndex: 9999 }}>
-            <div>Status: {isLoading ? '⏳ Loading' : videoError ? '❌ Error' : '✅ Playing'}</div>
-            <div>Cloud: {CLOUD_NAME}</div>
-            <div>Video: {VIDEO_ID}</div>
-            <div>URLs: {videoUrls.length} sources</div>
-          </div>
-        )}
       </div>
       
       <Navbar />
