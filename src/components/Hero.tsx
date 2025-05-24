@@ -13,7 +13,6 @@ const Hero: React.FC<HeroProps> = ({
   title = "WELCOME TO VENTY ROLEPLAY",
   subtitle = "Experience the ultimate GTA V roleplay server with immersive police, criminal, and civilian gameplay",
   showButtons = true,
-  backgroundImage = 'bg-[url("../assets/images/hero-bg.jpg")]'
 }) => {
   // Check if viewport is in the target range (around 758x642)
   const [isTabletView, setIsTabletView] = useState(false);
