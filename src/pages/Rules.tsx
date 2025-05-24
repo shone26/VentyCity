@@ -1,10 +1,30 @@
 // src/pages/Rules.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 
 const Rules: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('general');
   const [isTranslated, setIsTranslated] = useState(false);
+
+    // Handle anchor scrolling when component mounts
+    useEffect(() => {
+      // Check if there's a hash in the URL
+      const hash = window.location.hash;
+      if (hash === '#rules') {
+        // Small delay to ensure the page is fully rendered
+        setTimeout(() => {
+          const element = document.querySelector('#rules');
+          if (element) {
+            const navbarHeight = 80; // Adjust this to match your navbar height
+            const elementPosition = (element as HTMLElement).offsetTop - navbarHeight;
+            window.scrollTo({
+              top: elementPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 200);
+      }
+    }, []);
 
   // Toggle translation state
   const toggleTranslation = () => {
@@ -174,12 +194,12 @@ const Rules: React.FC = () => {
         backgroundImage="bg-[url('../assets/images/rules-bg.jpg')]"
       />
 
-      <section className="py-12 sm:py-16 md:py-20 bg-black">
+      <section className="py-12 sm:py-16 md:py-20 bg-black" id="rules">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             {/* Rule categories tabs */}
             <div className="overflow-x-auto py-2 mb-8 sm:mb-12">
-              <div className="flex flex-nowrap min-w-max gap-2 justify-center sm:flex-wrap sm:min-w-0">
+              <div className="flex flex-nowrap min-w-max gap-2 justify-center sm:flex-wrap sm:min-w-0" >
                 <CategoryButton
                   id="general"
                   active={activeCategory === 'general'}

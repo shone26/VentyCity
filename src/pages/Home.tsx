@@ -195,7 +195,7 @@ const Home: React.FC = () => {
 
           <div className="text-center mt-8 sm:mt-10">
             <Link
-              to="/gallery"
+              to="/gallery#gallery"
               className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
             >
               View Full Gallery
@@ -217,7 +217,7 @@ const Home: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
-                to="/join"
+                to="/join#discord-community"
                 className="px-6 sm:px-8 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm sm:text-lg"
               >
                 How To Join
@@ -262,7 +262,7 @@ const Home: React.FC = () => {
 
           <div className="text-center mt-8 sm:mt-10">
             <a
-              href="https://discord.gg/Pv77Upbptx"
+              href="https://discord.gg/9f5wHbBD"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-black/50 backdrop-blur-sm border-2 border-purple-500 text-white rounded-lg font-medium hover:bg-black/70 transition-colors text-sm sm:text-base"

@@ -1,8 +1,26 @@
 // src/pages/JoinUs.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 
 const JoinUs: React.FC = () => {
+  // Handle anchor scrolling when component mounts
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+    if (hash) {
+      // Small delay to ensure the page is fully rendered
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div>
       <Hero
@@ -17,10 +35,12 @@ const JoinUs: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             {/* Getting Started Steps */}
             <div className="space-y-16">
+              {/* Step 1 - Discord Community (with anchor ID) */}
               <StepItem
                 number="01"
                 title="Join Our Discord Community"
                 description="Our Discord server is the central hub for all VENTY Roleplay activities, announcements, and support."
+                id="discord-community" // Add anchor ID here
               >
                 <div className="space-y-4 mt-6">
                   <p className="text-gray-400">
@@ -133,27 +153,6 @@ const JoinUs: React.FC = () => {
                   </p>
                 </div>
               </StepItem>
-
-              {/* <StepItem
-                number="06"
-                title="Attend Newcomer Orientation"
-                description="Join our optional but recommended orientation session to get familiar with the server."
-              >
-                <div className="space-y-4 mt-6">
-                  <p className="text-gray-400">
-                    We hold newcomer orientation sessions every day at 8PM EST. During these sessions, our staff will:
-                  </p>
-                  <ul className="list-disc list-inside text-gray-400 space-y-2">
-                    <li>Show you around the city</li>
-                    <li>Explain key gameplay mechanics</li>
-                    <li>Introduce you to the economy system</li>
-                    <li>Answer any questions you may have</li>
-                  </ul>
-                  <p className="text-gray-400 pt-2">
-                    Check the #orientation-schedule channel on Discord for the next available session.
-                  </p>
-                </div>
-              </StepItem> */}
             </div>
 
             {/* Additional Resources */}
@@ -161,36 +160,12 @@ const JoinUs: React.FC = () => {
               <h3 className="text-2xl font-bold text-orange-400 mb-6">Additional Resources</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* <ResourceCard
-                  title="Beginner's Guide"
-                  description="A comprehensive guide to help new players understand the VENTY Roleplay experience."
-                  link="#"
-                  linkText="Read Guide"
-                />
-                <ResourceCard
-                  title="Server Commands"
-                  description="List of all available commands and their functions to help you navigate the server."
-                  link="#"
-                  linkText="View Commands"
-                /> */}
                 <ResourceCard
                   title="Rule Guide"
                   description="A comprehensive guide to the community rules and guidelines to ensure a respectful and enjoyable experience for all members"
-                  link="/rules"
+                  link="/rules#rules"
                   linkText="View Rules"
                 />
-                {/* <ResourceCard
-                  title="Economy Guide"
-                  description="Learn how to make money, buy properties, and thrive in our economy system."
-                  link="#"
-                  linkText="Learn More"
-                />
-                <ResourceCard
-                  title="Roleplay 101"
-                  description="New to roleplay? This guide covers the basics of creating compelling RP scenarios."
-                  link="#"
-                  linkText="Start Learning"
-                /> */}
               </div>
             </div>
 
@@ -224,13 +199,13 @@ const StepItem: React.FC<{
   title: string;
   description: string;
   children: React.ReactNode;
-}> = ({ number, title, description, children }) => (
-  <div className="flex flex-col md:flex-row gap-6">
+  id?: string; // Add optional id prop
+}> = ({ number, title, description, children, id }) => (
+  <div className="flex flex-col md:flex-row gap-6" id={id}> {/* Add id to the div */}
     <div className="flex-shrink-0 flex items-start md:items-center">
       <div className="bg-gradient-to-r from-orange-500 to-purple-600 text-white text-4xl font-bold w-16 h-16 flex items-center justify-center rounded-full">
         {number}
       </div>
-      {/* <div className="hidden md:block w-px h-full bg-purple-500/30 ml-8 -my-6"></div> */}
     </div>
     <div className="flex-grow">
       <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>

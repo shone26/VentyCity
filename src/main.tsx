@@ -1,9 +1,6 @@
 // src/main.tsx
 
 import './index.css'
-// import './styles/responsive-fixes.css'
-// import './styles/responsive-utils.css'
-// import './styles/animation.css'
 
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -18,8 +15,8 @@ import RootLayout from './components/RootLayout';
 import { ViewportProvider } from './contexts/ViewportContext';
 import VideoDebug from './components/VideoDebug';
 import VideoTestPage from './pages/VideoTestPage';
-import BilingualRules from './pages/BilingualRules'; // Import the new page
-
+import BilingualRules from './pages/BilingualRules';
+import ProtectedGalleryCMS from './pages/ProtectedGalleryCMS'; // Add this import
 
 // Define the router with TypeScript
 const router = createBrowserRouter([
@@ -52,6 +49,11 @@ const router = createBrowserRouter([
         element: <Gallery />,
       },
     ],
+  },
+  // Add CMS route outside of RootLayout for full-screen access
+  {
+    path: "/gallery-cms",
+    element: <ProtectedGalleryCMS />,
   },
   // Add a standalone route for BilingualRules
   {
