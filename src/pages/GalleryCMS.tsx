@@ -23,6 +23,7 @@ const ClientSideAutoUpdater: React.FC = () => {
   const [updateStatus, setUpdateStatus] = useState<{ type: 'success' | 'error' | 'info' | ''; message: string }>({ type: '', message: '' });
   const [copyStatus, setCopyStatus] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
+  const [isBulkMode, setIsBulkMode] = useState(false);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -31,6 +32,15 @@ const ClientSideAutoUpdater: React.FC = () => {
     category: [] as string[],
     author: '',
     date: new Date().toISOString().split('T')[0]
+  });
+
+  // Bulk form state
+  const [bulkFormData, setBulkFormData] = useState({
+    imageUrls: '',
+    author: '',
+    date: new Date().toISOString().split('T')[0],
+    category: [] as string[],
+    captionPrefix: ''
   });
 
   const categories = [
@@ -64,61 +74,7 @@ const ClientSideAutoUpdater: React.FC = () => {
   const loadInitialGalleryImages = () => {
     // IMPORTANT: Copy your current galleryImages array from Gallery.tsx here
     const initialImages: GalleryImage[] = [
-      {
-        id: 'img-1',
-        src: 'https://i.ibb.co/m7X3VXM/1.png',
-        thumbnail: 'https://i.ibb.co/m7X3VXM/1.png',
-        caption: 'On a mountain',
-        category: ['civilian', 'scenery'],
-        author: 'Ⓥ Manikh',
-        date: '2025-03-04'
-      },
-      {
-        id: 'img-2',
-        src: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036272905420810/Screenshot_522.png',
-        thumbnail: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036272905420810/Screenshot_522.png',
-        caption: 'Thrimana',
-        category: ['events', 'civilian'],
-        author: '𝑼𝑺𝑯𝑨𝑵',
-        date: '2025-04-19'
-      },
-      {
-        id: 'img-3',
-        src: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036272540782602/Screenshot_521.png',
-        thumbnail: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036272540782602/Screenshot_521.png',
-        caption: 'Thrimana Event Scene',
-        category: ['events', 'civilian'],
-        author: '𝑼𝑺𝑯𝑨𝑵',
-        date: '2025-04-19'
-      },
-      {
-        id: 'img-4',
-        src: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036428849778688/Screenshot_513.png',
-        thumbnail: 'https://cdn.discordapp.com/attachments/1343855665075978300/1363036428849778688/Screenshot_513.png',
-        caption: 'Community Gathering',
-        category: ['events', 'civilian'],
-        author: '𝑼𝑺𝑯𝑨𝑵',
-        date: '2025-04-19'
-      },
-      {
-        id: 'img-5',
-        src: 'https://files.mastodon.social/media_attachments/files/113/862/398/818/659/282/original/1f53153d490ffb2d.png',
-        thumbnail: 'https://files.mastodon.social/media_attachments/files/113/862/398/818/659/282/original/1f53153d490ffb2d.png',
-        caption: 'Police Station',
-        category: ['police', 'action'],
-        author: 'Anonymous',
-        date: '2025-04-15'
-      },
-      {
-        id: 'img-6',
-        src: 'https://files.mastodon.social/media_attachments/files/113/862/393/796/845/821/original/de3ccc322f9ede65.png',
-        thumbnail: 'https://files.mastodon.social/media_attachments/files/113/862/393/796/845/821/original/de3ccc322f9ede65.png',
-        caption: 'A Yakuza Member',
-        category: ['action', 'criminal'],
-        author: 'Anonymous',
-        date: '2025-01-21'
-      }
-      // Add more of your current images here...
+      
     ];
     setImages(initialImages);
   };
@@ -131,13 +87,30 @@ const ClientSideAutoUpdater: React.FC = () => {
       author: '',
       date: new Date().toISOString().split('T')[0]
     });
+    setBulkFormData({
+      imageUrls: '',
+      author: '',
+      date: new Date().toISOString().split('T')[0],
+      category: [],
+      captionPrefix: ''
+    });
     setEditingImage(null);
     setIsFormOpen(false);
+    setIsBulkMode(false);
   };
 
   const handleSubmit = () => {
-    if (!formData.src || !formData.caption || !formData.author) {
-      showStatus('error', 'Please fill in all required fields');
+    if (isBulkMode) {
+      handleBulkSubmit();
+    } else {
+      handleSingleSubmit();
+    }
+  };
+
+  const handleSingleSubmit = () => {
+    // Only require src and author - caption is now optional
+    if (!formData.src || !formData.author) {
+      showStatus('error', 'Please fill in Image URL and Author (required fields)');
       return;
     }
 
@@ -145,7 +118,7 @@ const ClientSideAutoUpdater: React.FC = () => {
       id: editingImage ? editingImage.id : `img-${Date.now()}`,
       src: formData.src,
       thumbnail: formData.src,
-      caption: formData.caption,
+      caption: formData.caption || 'Untitled', // Default caption if empty
       category: formData.category,
       author: formData.author,
       date: formData.date
@@ -163,6 +136,44 @@ const ClientSideAutoUpdater: React.FC = () => {
     setImages(updatedImages);
     resetForm();
     setHasChanges(true);
+  };
+
+  const handleBulkSubmit = () => {
+    if (!bulkFormData.imageUrls.trim() || !bulkFormData.author) {
+      showStatus('error', 'Please fill in Image URLs and Author (required fields)');
+      return;
+    }
+
+    // Split URLs by newlines and filter out empty lines
+    const urls = bulkFormData.imageUrls
+      .split('\n')
+      .map(url => url.trim())
+      .filter(url => url.length > 0);
+
+    if (urls.length === 0) {
+      showStatus('error', 'Please provide at least one image URL');
+      return;
+    }
+
+    // Create multiple images
+    const newImages: GalleryImage[] = urls.map((url, index) => ({
+      id: `img-${Date.now()}-${index}`,
+      src: url,
+      thumbnail: url,
+      caption: bulkFormData.captionPrefix 
+        ? `${bulkFormData.captionPrefix} ${index + 1}`
+        : 'Untitled',
+      category: bulkFormData.category,
+      author: bulkFormData.author,
+      date: bulkFormData.date
+    }));
+
+    const updatedImages = [...images, ...newImages];
+    setImages(updatedImages);
+    resetForm();
+    setHasChanges(true);
+    
+    showStatus('success', `✅ Successfully added ${newImages.length} images!`);
   };
 
   const handleEdit = (image: GalleryImage) => {
@@ -186,16 +197,30 @@ const ClientSideAutoUpdater: React.FC = () => {
   };
 
   const handleCategoryChange = (category: string, checked: boolean) => {
-    if (checked) {
-      setFormData({
-        ...formData,
-        category: [...formData.category, category]
-      });
+    if (isBulkMode) {
+      if (checked) {
+        setBulkFormData({
+          ...bulkFormData,
+          category: [...bulkFormData.category, category]
+        });
+      } else {
+        setBulkFormData({
+          ...bulkFormData,
+          category: bulkFormData.category.filter(c => c !== category)
+        });
+      }
     } else {
-      setFormData({
-        ...formData,
-        category: formData.category.filter(c => c !== category)
-      });
+      if (checked) {
+        setFormData({
+          ...formData,
+          category: [...formData.category, category]
+        });
+      } else {
+        setFormData({
+          ...formData,
+          category: formData.category.filter(c => c !== category)
+        });
+      }
     }
   };
 
@@ -406,6 +431,17 @@ ${images.map(img => `  {
             >
               <Plus className="w-4 h-4" />
               Add New Image
+            </button>
+            
+            <button
+              onClick={() => {
+                setIsBulkMode(true);
+                setIsFormOpen(true);
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <Images className="w-4 h-4" />
+              Bulk Add Images
             </button>
           </div>
         </div>
@@ -680,116 +716,238 @@ ${images.map(img => `  {
             <div className="bg-gray-800 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold">
-                  {editingImage ? '✏️ Edit Image' : '➕ Add New Image'}
+                  {editingImage ? '✏️ Edit Image' : isBulkMode ? '📸 Bulk Add Images' : '➕ Add New Image'}
                 </h2>
-                <button
-                  onClick={resetForm}
-                  className="text-gray-400 hover:text-white"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    🖼️ Image URL <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="url"
-                    value={formData.src}
-                    onChange={(e) => setFormData({...formData, src: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
-                    placeholder="https://discord.com/attachments/... or any image URL"
-                  />
-                  <p className="text-gray-500 text-xs mt-1">
-                    💡 Right-click on Discord images → Copy Link Address
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    📝 Caption <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.caption}
-                    onChange={(e) => setFormData({...formData, caption: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
-                    placeholder="Describe what's happening in the image"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    👤 Author <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.author}
-                    onChange={(e) => setFormData({...formData, author: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
-                    placeholder="Who took this screenshot?"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">📅 Date</label>
-                  <input
-                    type="date"
-                    value={formData.date}
-                    onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">🏷️ Categories</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {categories.filter(cat => cat !== 'all').map(category => (
-                      <label key={category} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-700 p-2 rounded">
-                        <input
-                          type="checkbox"
-                          checked={formData.category.includes(category)}
-                          onChange={(e) => handleCategoryChange(category, e.target.checked)}
-                          className="rounded border-gray-600 text-purple-500 focus:ring-purple-500"
-                        />
-                        <span className="text-sm">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {formData.src && (
-                  <div>
-                    <label className="block text-sm font-medium mb-2">👀 Preview</label>
-                    <div className="relative">
-                      <img
-                        src={formData.src}
-                        alt="Preview"
-                        className="w-full h-48 object-cover rounded border border-gray-600"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                        }}
-                      />
+                <div className="flex items-center gap-3">
+                  {!editingImage && (
+                    <div className="flex bg-gray-700 rounded-lg p-1">
+                      <button
+                        onClick={() => setIsBulkMode(false)}
+                        className={`px-3 py-1 rounded text-sm transition-colors ${
+                          !isBulkMode 
+                            ? 'bg-orange-500 text-white' 
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        Single
+                      </button>
+                      <button
+                        onClick={() => setIsBulkMode(true)}
+                        className={`px-3 py-1 rounded text-sm transition-colors ${
+                          isBulkMode 
+                            ? 'bg-blue-500 text-white' 
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        Bulk
+                      </button>
                     </div>
-                  </div>
-                )}
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    onClick={handleSubmit}
-                    className="flex-1 py-2 px-4 bg-gradient-to-r from-orange-500 to-purple-600 rounded hover:opacity-90 transition-opacity font-medium"
-                  >
-                    {editingImage ? '✅ Update Image' : '🚀 Add Image'}
-                  </button>
+                  )}
                   <button
                     onClick={resetForm}
-                    className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 transition-colors"
+                    className="text-gray-400 hover:text-white"
                   >
-                    Cancel
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
+              </div>
+
+              {isBulkMode ? (
+                <div className="space-y-4">
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                    <h3 className="text-blue-400 font-semibold mb-2">📦 Bulk Upload Tips:</h3>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Paste multiple image URLs (one per line)</li>
+                      <li>• All images will use the same author, date, and categories</li>
+                      <li>• Captions will be auto-numbered if you provide a prefix</li>
+                      <li>• Perfect for adding multiple screenshots from the same event!</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      🖼️ Image URLs <span className="text-red-400">*</span>
+                    </label>
+                    <textarea
+                      value={bulkFormData.imageUrls}
+                      onChange={(e) => setBulkFormData({...bulkFormData, imageUrls: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none h-32"
+                      placeholder={`https://discord.com/attachments/.../image1.png
+https://discord.com/attachments/.../image2.png
+https://discord.com/attachments/.../image3.png
+
+(One URL per line)`}
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      💡 Paste one image URL per line. Right-click images → Copy Link Address
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      👤 Author <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={bulkFormData.author}
+                      onChange={(e) => setBulkFormData({...bulkFormData, author: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                      placeholder="Who took these screenshots?"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">📅 Date</label>
+                    <input
+                      type="date"
+                      value={bulkFormData.date}
+                      onChange={(e) => setBulkFormData({...bulkFormData, date: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      📝 Caption Prefix <span className="text-gray-400">(Optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={bulkFormData.captionPrefix}
+                      onChange={(e) => setBulkFormData({...bulkFormData, captionPrefix: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                      placeholder="Event Scene"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      💡 Images will be named: "Event Scene 1", "Event Scene 2", etc.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">🏷️ Categories</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {categories.filter(cat => cat !== 'all').map(category => (
+                        <label key={category} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-700 p-2 rounded">
+                          <input
+                            type="checkbox"
+                            checked={bulkFormData.category.includes(category)}
+                            onChange={(e) => handleCategoryChange(category, e.target.checked)}
+                            className="rounded border-gray-600 text-purple-500 focus:ring-purple-500"
+                          />
+                          <span className="text-sm">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      🖼️ Image URL <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.src}
+                      onChange={(e) => setFormData({...formData, src: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                      placeholder="https://discord.com/attachments/... or any image URL"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      💡 Right-click on Discord images → Copy Link Address
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      📝 Caption <span className="text-gray-400">(Optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.caption}
+                      onChange={(e) => setFormData({...formData, caption: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                      placeholder="Describe what's happening in the image (optional)"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      💡 Leave empty for auto-generated "Untitled" caption
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      👤 Author <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.author}
+                      onChange={(e) => setFormData({...formData, author: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                      placeholder="Who took this screenshot?"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">📅 Date</label>
+                    <input
+                      type="date"
+                      value={formData.date}
+                      onChange={(e) => setFormData({...formData, date: e.target.value})}
+                      className="w-full px-3 py-2 bg-gray-700 rounded border border-gray-600 focus:border-purple-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">🏷️ Categories</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {categories.filter(cat => cat !== 'all').map(category => (
+                        <label key={category} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-700 p-2 rounded">
+                          <input
+                            type="checkbox"
+                            checked={formData.category.includes(category)}
+                            onChange={(e) => handleCategoryChange(category, e.target.checked)}
+                            className="rounded border-gray-600 text-purple-500 focus:ring-purple-500"
+                          />
+                          <span className="text-sm">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {formData.src && (
+                    <div>
+                      <label className="block text-sm font-medium mb-2">👀 Preview</label>
+                      <div className="relative">
+                        <img
+                          src={formData.src}
+                          alt="Preview"
+                          className="w-full h-48 object-cover rounded border border-gray-600"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-4">
+                <button
+                  onClick={handleSubmit}
+                  className="flex-1 py-2 px-4 bg-gradient-to-r from-orange-500 to-purple-600 rounded hover:opacity-90 transition-opacity font-medium"
+                >
+                  {editingImage 
+                    ? '✅ Update Image' 
+                    : isBulkMode 
+                      ? '🚀 Add All Images' 
+                      : '🚀 Add Image'}
+                </button>
+                <button
+                  onClick={resetForm}
+                  className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 transition-colors"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
