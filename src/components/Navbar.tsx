@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
         scrolled || isTabletView ? 'bg-black/80 backdrop-blur-md py-1' : 'bg-transparent py-2 sm:py-4'
       } navbar-container`}
     >
-      <div className="container mx-auto px-2 sm:px-4">
+      <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
             <img 

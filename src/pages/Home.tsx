@@ -12,8 +12,6 @@ const communityImage4 = 'https://i.ibb.co/fVcVWfKm/4.jpg';
 const communityImage5 = 'https://i.ibb.co/zTK38mg1/5.png';
 const communityImage6 = 'https://i.ibb.co/nNVT1615/6.jpg';
 
-
-
 interface ServerStatus {
   status: 'online' | 'offline';
   members: number;
@@ -71,9 +69,9 @@ const Home: React.FC = () => {
     <div>
       <Hero />
 
-            {/* Server Status Section */}
-            <section className="py-8 sm:py-12 bg-black">
-        <div className="container mx-auto px-4">
+      {/* Server Status Section */}
+      <section className="py-8 sm:py-12 bg-black">
+        <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 rounded-xl p-6 sm:p-8">
             <h2 className="text-xl sm:text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-4 sm:mb-6">
               VENTY ROLEPLAY SERVER STATUS
@@ -121,12 +119,12 @@ const Home: React.FC = () => {
 
       {/* Features Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16 px-2">
+        <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16">
             EXPERIENCE THE NEXT LEVEL OF ROLEPLAY
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <FeatureCard
               icon="🚓"
               title="Police & Crime"
@@ -163,12 +161,12 @@ const Home: React.FC = () => {
 
       {/* Community Showcase */}
       <section className="py-12 sm:py-16 md:py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16 px-2">
+        <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16">
             OUR COMMUNITY IN ACTION
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { src: communityImage1, caption: 'Server Event Meetup' },
               { src: communityImage2, caption: 'Roleplay Scenario' },
@@ -209,12 +207,12 @@ const Home: React.FC = () => {
       {/* How to Join CTA - Updated with matching colors */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-purple-900/20 to-black relative">
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full relative z-10" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-4 sm:mb-6 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-4 sm:mb-6">
               READY TO JOIN THE ACTION?
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-2">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
               Follow our simple steps to join VENTY Roleplay and start your new life in Los Santos. Our community welcomes players of all experience levels.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
@@ -239,8 +237,8 @@ const Home: React.FC = () => {
 
       {/* Recent Updates */}
       <section className="py-12 sm:py-16 md:py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16 px-2">
+        <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-10 sm:mb-16">
             LATEST SERVER UPDATES
           </h2>
 
@@ -304,7 +302,6 @@ const UpdateCard: React.FC<{
     <p className="text-gray-400 text-sm sm:text-base">{description}</p>
   </div>
 );
-
 
 const StatusCard: React.FC<{
   label: string;
