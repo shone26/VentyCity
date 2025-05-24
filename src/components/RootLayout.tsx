@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import WatermarkCopyright from './WatermarkCopyright';
 
 const RootLayout: React.FC = () => {
   // Check if viewport is in the target range (around 758x642)
@@ -183,6 +184,9 @@ const RootLayout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
+      <WatermarkCopyright />
+      
+
       
       {/* Special CSS for tablet viewport */}
       {isTabletView && (

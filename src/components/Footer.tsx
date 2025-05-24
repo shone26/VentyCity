@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-black border-t border-purple-900/30">
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact and Server Info */}
-          <div>
+          {/* <div>
             <h3 className="text-white font-bold mb-4 text-lg">Connect With Us</h3>
             <p className="text-gray-400 mb-2">
               <strong className="text-orange-400">Discord:</strong> discord.gg/venty
@@ -42,18 +42,21 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6">
               <strong className="text-orange-400">Players:</strong> <span className="text-green-500">150+</span> online
             </p>
-            {/* <a
+            <a
               href="https://discord.gg/Pv77Upbptx"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm inline-block"
             >
               Join Our Discord
-            </a> */}
-          </div>
+            </a>
+          </div> */}
 
-          {/* Quick Links */}
-          <div>
+          {/* Empty spacer for better spacing */}
+          <div className="hidden md:block"></div>
+          
+
+          <div className="md:col-start-6">
             <h3 className="text-white font-bold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-2">
               <FooterLink to="/">Home</FooterLink>
@@ -69,12 +72,10 @@ const Footer: React.FC = () => {
         {/* Bottom Section */}
         <div className="mt-12 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} VENTY Roleplay. All rights reserved.
+            {/* &copy; {currentYear} VENTY Roleplay. All rights reserved. */}
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-            <Link to="#" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-            <Link to="#" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
-            <Link to="#" className="hover:text-gray-300 transition-colors">Content Policy</Link>
+            <Link to="https://discord.gg/CJA3AbyA" className="hover:text-gray-300 transition-colors">Content Policy</Link>
             <a
               href="https://fivem.net"
               target="_blank"
