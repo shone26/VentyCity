@@ -1,6 +1,8 @@
-// src/main.tsx
+// src/main.tsx - With mobile navbar fixes
 
 import './index.css'
+// Import mobile navbar fixes
+import './styles/mobile-navbar-fixes.css' // Add this CSS file
 
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -16,7 +18,7 @@ import { ViewportProvider } from './contexts/ViewportContext';
 import VideoDebug from './components/VideoDebug';
 import VideoTestPage from './pages/VideoTestPage';
 import BilingualRules from './pages/BilingualRules';
-import ProtectedGalleryCMS from './pages/ProtectedGalleryCMS'; // Add this import
+import ProtectedGalleryCMS from './pages/ProtectedGalleryCMS';
 
 // Define the router with TypeScript
 const router = createBrowserRouter([

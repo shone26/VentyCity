@@ -1,0 +1,273 @@
+/* src/styles/navbar-responsive.css */
+/* Add this to your global styles or import in main.tsx */
+
+/* Smooth transitions for mobile menu */
+.mobile-menu-enter {
+    transform: translateX(100%);
+  }
+  
+  .mobile-menu-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease-in-out;
+  }
+  
+  .mobile-menu-exit {
+    transform: translateX(0);
+  }
+  
+  .mobile-menu-exit-active {
+    transform: translateX(100%);
+    transition: transform 300ms ease-in-out;
+  }
+  
+  /* Navbar responsiveness fixes */
+  @media (max-width: 767px) {
+    /* Mobile specific navbar adjustments */
+    .navbar-mobile {
+      padding: 0.75rem 1rem;
+    }
+    
+    .navbar-mobile .logo {
+      height: 2rem;
+    }
+    
+    .mobile-menu-overlay {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
+    .mobile-nav-link {
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet specific adjustments */
+    .navbar-tablet {
+      padding: 1rem 1.5rem;
+    }
+    
+    .navbar-tablet .logo {
+      height: 2.5rem;
+    }
+  }
+  
+  /* Special handling for 758x642 viewport */
+  @media (min-width: 750px) and (max-width: 768px) and (max-height: 650px) {
+    .navbar-container {
+      height: 3.5rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    .navbar-logo {
+      height: 2rem;
+    }
+    
+    .navbar-button {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+    }
+    
+    .mobile-menu-button {
+      padding: 0.25rem;
+    }
+    
+    .mobile-menu-button svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+  
+  /* Improved mobile menu animations */
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .mobile-menu-slide-in {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+  
+  .mobile-menu-slide-out {
+    animation: slideOutRight 0.3s ease-in forwards;
+  }
+  
+  /* Prevent horizontal scroll when menu is open */
+  .mobile-menu-open {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets for mobile */
+  @media (max-width: 767px) {
+    .mobile-nav-item {
+      min-height: 48px; /* iOS recommended touch target */
+      display: flex;
+      align-items: center;
+    }
+    
+    .mobile-discord-button {
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+    }
+  }
+  
+  /* Hamburger menu animation */
+  .hamburger-line {
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  
+  .hamburger-open .hamburger-line:first-child {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-open .hamburger-line:last-child {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Backdrop blur support fallback */
+  @supports not (backdrop-filter: blur(10px)) {
+    .mobile-menu-overlay {
+      background: rgba(0, 0, 0, 0.98);
+    }
+    
+    .navbar-backdrop {
+      background: rgba(0, 0, 0, 0.95);
+    }
+  }
+  
+  /* High DPI displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .navbar-logo {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+  
+  /* Landscape mobile adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .mobile-menu-content {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .mobile-nav-link {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .mobile-menu-footer {
+      padding: 1rem;
+    }
+  }
+  
+  /* Focus states for accessibility */
+  .nav-link:focus,
+  .mobile-nav-link:focus,
+  .mobile-menu-button:focus {
+    outline: 2px solid #FF5700;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Safe area insets for devices with notches */
+  @supports (padding: max(0px)) {
+    .navbar-container {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+      padding-top: env(safe-area-inset-top);
+    }
+    
+    .mobile-menu-overlay {
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+  
+  /* iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .mobile-menu-overlay {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .navbar-container {
+      -webkit-backdrop-filter: blur(10px);
+    }
+  }
+  
+  /* Android specific optimizations */
+  @media (max-width: 767px) {
+    .mobile-nav-link {
+      -webkit-tap-highlight-color: rgba(255, 87, 0, 0.1);
+      tap-highlight-color: rgba(255, 87, 0, 0.1);
+    }
+  }
+  
+  /* Prevent zoom on input focus (iOS) */
+  @media (max-width: 767px) {
+    input, select, textarea {
+      font-size: 16px;
+    }
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    .navbar-backdrop {
+      background: rgba(0, 0, 0, 0.95);
+    }
+    
+    .mobile-menu-overlay {
+      background: rgba(0, 0, 0, 0.98);
+    }
+  }
+  
+  /* Safe area insets for devices with notches */
+  @supports (padding: max(0px)) {
+    .navbar-container {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+  
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu-overlay {
+      transition: none;
+    }
+    
+    .nav-link {
+      transition: none;
+    }
+    
+    .hamburger-line {
+      transition: none;
+    }
+  }
