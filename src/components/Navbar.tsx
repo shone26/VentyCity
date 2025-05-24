@@ -3,13 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
-
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,14 +19,26 @@ const Navbar: React.FC = () => {
       }
     };
 
+    // Check for lightbox class on body
     const checkLightbox = () => {
       setIsLightboxOpen(document.body.classList.contains('lightbox-open'));
     };
+    
+    // Initial check
     checkLightbox();
+    
+    // Create a MutationObserver to watch for class changes on body
+    const observer = new MutationObserver(checkLightbox);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
 
     window.addEventListener('scroll', handleScroll);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
     };
   }, []);
 
@@ -68,11 +78,16 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
+  // Hide navbar when lightbox is open
+  if (isLightboxOpen) {
+    return null;
+  }
+
   return (
     <header
-      className={`fixed w-full transition-all duration-300 ${isLightboxOpen ? 'hidden' : ''} ${scrolled || isTabletView ? 'bg-black/80 backdrop-blur-md py-1' : 'bg-transparent py-2 sm:py-4'
+      className={`fixed w-full transition-all duration-300 ${scrolled || isTabletView ? 'bg-black/80 backdrop-blur-md py-1' : 'bg-transparent py-2 sm:py-4'
         } navbar-container`}
-      style={{ zIndex: 1000 }} // bump to 1000 (not 999)
+      style={{ zIndex: 1000 }}
     >
       <div className="w-full" style={{ margin: 0, padding: '0 1rem', maxWidth: 'none' }}>
         <div className="flex justify-between items-center">
@@ -117,8 +132,8 @@ const Navbar: React.FC = () => {
             <NavLink to="/join" isActive={isActive("/join")}>Join</NavLink>
             <NavLink to="/staff" isActive={isActive("/staff")}>Staff</NavLink>
             <NavLink to="/gallery" isActive={isActive("/gallery")}>Gallery</NavLink>
-
           </nav>
+          
           <a
             href="https://discord.gg/Pv77Upbptx"
             target="_blank"
