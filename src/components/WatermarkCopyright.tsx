@@ -1,5 +1,5 @@
 // src/components/WatermarkCopyright.tsx
-import React from 'react';
+
 
 // Copyright-style footer with proper spacing
 export function WatermarkCopyright() {
