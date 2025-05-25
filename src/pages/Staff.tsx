@@ -23,19 +23,18 @@ const sonu = 'https://i.ibb.co/rGTFFyXM/sonu.png';
 const Staff: React.FC = () => {
   const [showAllModerators, setShowAllModerators] = useState(false);
 
-
-    // Define all server owners
-    const allServerOwners = [
-      {
-        name: "ⓥ RanDiNeX",
-        role: "Founder & Lead Developer",
-        description: "Founded VENTY Roleplay in 2023 and leads the development team. Specializes in core systems and optimization.",
-        discord: { username: "randinex", link: "https://discordapp.com/users/812379890883887124" },
-        joinDate: "March 2025",
-        avatar: randy,
-        gradient: "from-orange-500 to-purple-600"
-      }
-    ];
+    // // Define all server owners
+    // const allServerOwners = [
+    //   {
+    //     name: "ⓥ RanDiNeX",
+    //     role: "Founder & Lead Developer",
+    //     description: "Founded VENTY Roleplay in 2023 and leads the development team. Specializes in core systems and optimization.",
+    //     discord: { username: "randinex", link: "https://discordapp.com/users/812379890883887124" },
+    //     joinDate: "March 2025",
+    //     avatar: randy,
+    //     gradient: "from-orange-500 to-purple-600"
+    //   }
+    // ];
   
     // Define all management team members
     const allManagementTeam = [
@@ -59,17 +58,35 @@ const Staff: React.FC = () => {
       },
       {
         name: "soul",
-        role: "Lead Map & Asset Developer",
+        role: "Lead Vehicle & Asset Developer",
         description: "Creates custom buildings, interiors, and map modifications to enhance the city environment.",
         discord: { username: "darksoulbestt", link: "https://discordapp.com/users/1046107593501851788" },
         joinDate: "July 2024",
         avatar: soul,
         gradient: "from-orange-500 to-purple-600"
+      },
+      {
+        name: "Logan",
+        role: "FiveM MLO Developer",
+        description: "Creates and integrates custom interior maps (MLOs) for FiveM servers, focusing on design, collisions, lighting, and performance optimization.",
+        discord: { username: "notsologan", link: "https://discordapp.com/users/700174891248255107" },
+        joinDate: "June 2024",
+        avatar: "https://cdn.discordapp.com/avatars/700174891248255107/4a26f2acb56379754b4316c3b1ff1f78.png?size=4096&ignore=true).", // Replace with actual avatar URL
+        gradient: "from-orange-500 to-purple-600"
       }
     ];
   
-    // Define all head administrators
+    // Define all head administrators - UPDATED with third administrator
     const allHeadAdministrators = [
+      {
+        name: "ⓥ RanDiNeX",
+        role: "Head Administrator",
+        description: "Senior administrator responsible for community management, player relations, and ensuring smooth server operations.",
+        discord: { username: "randinex", link: "https://discordapp.com/users/812379890883887124" },
+        joinDate: "March 2025",
+        avatar: randy,
+        gradient: "from-red-500 to-purple-600"
+      },
       {
         name: "ꌗꃅꀤꋪꍏꈤ",
         role: "Head Administrator",
@@ -88,26 +105,46 @@ const Staff: React.FC = () => {
         avatar: pancha,
         gradient: "from-red-500 to-purple-600"
       }
+
+
     ];
   
     // Define all junior administrators
     const allJuniorAdministrators = [
       {
-        name: "AdminHelper",
+        name: "BEASTBOY✪",
         role: "Junior Administrator",
         description: "Assists with administrative duties, handles player appeals, and supports the Head Administrator in daily operations.",
-        discord: "adminhelper#1234",
+        discord: { 
+          username: "beastboyslk", // ← Change this
+          link: "https://discordapp.com/users/1247181438244229180" // ← Change this
+        },
         joinDate: "May 2024",
         avatar: beast,
         gradient: "from-red-500 to-purple-600"
       },
       {
-        name: "RuleKeeper",
+        name: "Ⓥ ela Chanux",
         role: "Junior Administrator",
         description: "Focuses on rule enforcement, policy implementation, and ensuring fair gameplay across all server activities.",
-        discord: "rulekeeper#5678",
+        discord: { 
+          username: "chanux7964", // ← Change this
+          link: "https://discordapp.com/users/828858745768509440" // ← Change this
+        },
         joinDate: "June 2024",
         avatar: chanux,
+        gradient: "from-red-500 to-purple-600"
+      },
+      {
+        name: "Ⓥ Manikh ", // ← Change this
+        role: "Junior Administrator",
+        description: "Specializes in player support, ticket resolution, and maintaining positive community interactions during peak hours.",
+        discord: { 
+          username: "jonty_lk", // ← Change this
+          link: "https://discordapp.com/users/1087594585603194980" // ← Change this
+        },
+        joinDate: "January 2025", // ← Change this
+        avatar: "https://cdn.discordapp.com/avatars/1087594585603194980/488027fb7046cd53268716f762a0b04f.png?size=4096&ignore=true).", // ← Change this
         gradient: "from-red-500 to-purple-600"
       }
     ];
@@ -190,9 +227,6 @@ const Staff: React.FC = () => {
       avatar: pheonix,
       gradient: "from-green-500 to-blue-600"
     },
-
-
-
     {
       name: "Yakari",
       role: "Moderator",
@@ -227,6 +261,15 @@ const Staff: React.FC = () => {
       discord: { username: "evonxgamer", link: "https://discordapp.com/users/952184532134686730" },
       joinDate: "October 2024",
       avatar: "https://cdn.discordapp.com/avatars/1201830266050715698/5237444c4868fee271800e1c12e1eb56.png?size=4096&ignore=true).",
+      gradient: "from-green-500 to-blue-600"
+    },
+    {
+      name: "ඇම්බුම් කෙසෙල් ගෙඩිය",
+      role: "Moderator",
+      description: "Specializes in helping new players and answering common questions.",
+      discord: { username: "nippa0729", link: "https://discordapp.com/users/1278952673860784182" },
+      joinDate: "April 2025",
+      avatar: "https://cdn.discordapp.com/avatars/1278952673860784182/15ac18a2ff5c1ada46e3294455a746cf.png?size=4096&ignore=true).",
       gradient: "from-green-500 to-blue-600"
     }
   ];
@@ -263,7 +306,7 @@ const Staff: React.FC = () => {
             </div>
 
              {/* Server Owners */}
-             <div className="mb-12 sm:mb-16 md:mb-20">
+             {/* <div className="mb-12 sm:mb-16 md:mb-20">
               <h2 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600 mb-8 sm:mb-12">
                 SERVER OWNERS
               </h2>
@@ -284,7 +327,7 @@ const Staff: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Management Team */}
             <div className="mb-12 sm:mb-16 md:mb-20">
@@ -292,7 +335,7 @@ const Staff: React.FC = () => {
                 MANAGEMENT TEAM 
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 {allManagementTeam.map((member, index) => (
                   <StaffCard
                     key={index}
@@ -315,7 +358,7 @@ const Staff: React.FC = () => {
               </h2>
 
               <div className="flex justify-center mb-8 sm:mb-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                   {allHeadAdministrators.map((admin, index) => (
                     <StaffCard
                       key={index}
@@ -331,11 +374,10 @@ const Staff: React.FC = () => {
                 </div>
               </div>
 
-              {/* Junior Administrators */}
               <h3 className="text-xl sm:text-2xl font-bold text-center text-orange-400 mb-6 sm:mb-8">
                 Junior Administrators
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                 {allJuniorAdministrators.map((admin, index) => (
                   <StaffCard
                     key={index}
@@ -408,7 +450,7 @@ const Staff: React.FC = () => {
                 <div className="flex justify-center mt-8">
                   <button
                     onClick={() => setShowAllModerators(!showAllModerators)}
-                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg font-medium hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                    className="flex items-center gap-2 px-6 py-3 bg-black/50 backdrop-blur-sm border-2 border-purple-500 text-white rounded-lg font-medium hover:bg-black/70 transition-colors text-sm sm:text-base"
                   >
                     {showAllModerators ? (
                       <>
