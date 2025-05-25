@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 // Import community images
 const communityImage1 = 'https://i.ibb.co/m7X3VXM/1.png';
 const communityImage2 = 'https://i.ibb.co/svdvDVth/2.png';
-const communityImage3 = 'https://i.ibb.co/TxDWNZVF/3.jpg';
+const communityImage3 = 'https://i.ibb.co/jPphSXWN/9.png';
 const communityImage4 = 'https://i.ibb.co/fVcVWfKm/4.jpg';
-const communityImage5 = 'https://i.ibb.co/zTK38mg1/5.png';
-const communityImage6 = 'https://i.ibb.co/nNVT1615/6.jpg';
+const communityImage5 = 'https://i.ibb.co/chp99P0q/12.png';
+const communityImage6 = 'https://i.ibb.co/1JP2pCkP/7.png';
 
 // interface ServerStatus {
 //   status: 'online' | 'offline';
