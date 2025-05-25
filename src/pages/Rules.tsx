@@ -17,7 +17,7 @@ const Rules: React.FC = () => {
           if (element) {
             const navbarHeight = 80; // Adjust this to match your navbar height
             const elementPosition = (element as HTMLElement).offsetTop - navbarHeight;
-            window.scrollTo({
+                window.scrollTo({
               top: elementPosition,
               behavior: 'smooth'
             });
