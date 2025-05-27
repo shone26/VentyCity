@@ -69,7 +69,7 @@ const galleryImages: GalleryImage[] = [
   {
     id: 'img-1748059365454',
     src: "https://cdn.discordapp.com/attachments/1343855665075978300/1375610225247260783/FiveM_by_Cfx.re_5_24_2025_4_19_24_AM.png?ex=6832505b&is=6830fedb&hm=6832d8ec76702092c3f847469d495f1ac203b29417dbaffed5afd9f077fe97ae&",
-    thumbnail: "https://cdn.discordapp.com/attachments/1343855665075978300/1375610225247260783/FiveM_by_Cfx.re_5_24_2025_4_19_24_AM.png?ex=6832505b&is=6830fedb&hm=6832d8ec76702092c3f847469d495f1ac203b29417dbaffed5afd9f077fe97ae&",
+    thumbnail: "https://cdn.discordapp.com/attachments/1343855665075978300/1375610225247260783/FiveM_by_Cfx.re_5_24_2025_4_19_24_AM.png?ex=68344a9b&is=6832f91b&hm=8a2731e11474c0839bf2984b944b43e1c3a1e62f8e91e2e7e628d84894d21c2e&",
     caption: 'Police In Ease',
     category: ['police'],
     author: 'i need a Bi##a',
@@ -230,7 +230,8 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'img-1748060755189',
-    src: "https://media.discordapp.net/attachments/1343855665075978300/1372041463143333969/La.PNG?ex=6831daf0&is=68308970&hm=61cc5ec45ff324866e150d2f8467aa257b5e40711a5c3874e196210030b54f41&=&format=webp&quality=lossless&width=514&height=438",
+    src: "https://cdn.discordapp.com/attachments/1343855665075978300/1372041463143333969/La.PNG?ex=68347df0&is=68332c70&hm=0fdfb0c357c641576bbf062fdce734404451beb02d829f608c9a8e8ffcf064d8&",
+    
     thumbnail: "https://media.discordapp.net/attachments/1343855665075978300/1372041463143333969/La.PNG?ex=6831daf0&is=68308970&hm=61cc5ec45ff324866e150d2f8467aa257b5e40711a5c3874e196210030b54f41&=&format=webp&quality=lossless&width=514&height=438",
     caption: 'Untitled',
     category: ['action', 'scenery'],
