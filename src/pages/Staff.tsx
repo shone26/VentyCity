@@ -168,7 +168,7 @@ const Staff: React.FC = () => {
       name: "SONU-ソヌ",
       role: "Moderator",
       description: "Specializes in helping new players and answering common questions.",
-      discord: { username: "pnx_17", link: "https://discordapp.com/users/1017906707252383764" },
+      discord: { username: "sonu_jp", link: "https://discordapp.com/users/1017906707252383764" },
       joinDate: "April 2025",
       avatar: sonu,
       gradient: "from-green-500 to-blue-600"
@@ -195,7 +195,7 @@ const Staff: React.FC = () => {
       name: "Ⓥ Costa",
       role: "Moderator",
       description: "Assists with player tickets and basic moderation duties.",
-      discord: { username: "draven_fd", link: "https://discordapp.com/users/353133769395404800" },
+      discord: { username: ".chucky217", link: "https://discordapp.com/users/353133769395404800" },
       joinDate: "May 2025",
       avatar: costa,
       gradient: "from-green-500 to-blue-600"

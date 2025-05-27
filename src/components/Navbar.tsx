@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
               <NavLink to="/rules" isActive={isActive("/rules")}>Rules</NavLink>
               <NavLink to="/join" isActive={isActive("/join")}>Join</NavLink>
               <NavLink to="/staff" isActive={isActive("/staff")}>Staff</NavLink>
-              <NavLink to="/gallery" isActive={isActive("/gallery")}>Gallery</NavLink>
+{/*               <NavLink to="/gallery" isActive={isActive("/gallery")}>Gallery</NavLink> */}
             </nav>
 
             {/* Desktop Discord Button */}
@@ -229,9 +229,9 @@ const Navbar: React.FC = () => {
                   <MobileNavLink to="/staff" isActive={isActive("/staff")} onClick={() => setIsOpen(false)}>
                     👥 Staff
                   </MobileNavLink>
-                  <MobileNavLink to="/gallery" isActive={isActive("/gallery")} onClick={() => setIsOpen(false)}>
+{/*                   <MobileNavLink to="/gallery" isActive={isActive("/gallery")} onClick={() => setIsOpen(false)}>
                     🖼️ Gallery
-                  </MobileNavLink>
+                  </MobileNavLink> */}
 
                   {/* Divider */}
                   <div className="border-t border-gray-700 my-4"></div>
