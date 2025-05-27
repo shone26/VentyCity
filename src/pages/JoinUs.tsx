@@ -111,7 +111,7 @@ const JoinUs: React.FC = () => {
                   </p>
                   <div className="pt-4">
                     <a
-                      href="https://venty-web-portal.vercel.app/"
+                      href="https://portal.ventyroleplay.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
