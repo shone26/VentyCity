@@ -238,7 +238,7 @@ const Navbar: React.FC = () => {
 
                   
                   <a
-                    href="https://venty-web-portal.vercel.app/"
+                    href="https://portal.ventyroleplay.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center px-4 py-3 text-white rounded-lg hover:bg-purple-500/20 transition-colors"
